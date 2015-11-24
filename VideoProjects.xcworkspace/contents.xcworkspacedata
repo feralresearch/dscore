@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "Shared Code">
+      <FileRef
+         location = "group:DSClassExtensions">
+      </FileRef>
+      <FileRef
+         location = "group:DSLayer">
+      </FileRef>
+      <FileRef
+         location = "group:DSLayerView">
+      </FileRef>
+      <FileRef
+         location = "group:DSOSC">
+      </FileRef>
+      <FileRef
+         location = "group:DSSyphon">
+      </FileRef>
+      <FileRef
+         location = "group:Frameworks">
+      </FileRef>
+      <FileRef
+         location = "group:StaticLibs">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:../Confess/Confess.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../Watcher/Watcher.xcodeproj">
+   </FileRef>
+</Workspace>
