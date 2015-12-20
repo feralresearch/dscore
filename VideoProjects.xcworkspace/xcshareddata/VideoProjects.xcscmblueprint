@@ -1,0 +1,44 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "6A70A0A09877C77B69187FF0F18FEADC54F1DD0A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C50C80C8E4B8C8E4F120EA009A88034F8DD964A5" : 0,
+    "549DC6CC39FA56C0652C114C6D2BF804DE68DD6C" : 0,
+    "9786A20FD08B27281754B25413C382C2A1ACAA8A" : 0,
+    "6A70A0A09877C77B69187FF0F18FEADC54F1DD0A" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E26656C8-07E5-4A87-9DA1-D14DA59C650E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C50C80C8E4B8C8E4F120EA009A88034F8DD964A5" : "SyMix\/",
+    "549DC6CC39FA56C0652C114C6D2BF804DE68DD6C" : "Watcher\/",
+    "9786A20FD08B27281754B25413C382C2A1ACAA8A" : "Confess\/",
+    "6A70A0A09877C77B69187FF0F18FEADC54F1DD0A" : "Common\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "VideoProjects",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "VideoProjects.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:tezcatlipoca\/watcher.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "549DC6CC39FA56C0652C114C6D2BF804DE68DD6C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:tezcatlipoca\/dscommon.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6A70A0A09877C77B69187FF0F18FEADC54F1DD0A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:tezcatlipoca\/confess.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9786A20FD08B27281754B25413C382C2A1ACAA8A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:tezcatlipoca\/symix-leviathan.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C50C80C8E4B8C8E4F120EA009A88034F8DD964A5"
+    }
+  ]
+}

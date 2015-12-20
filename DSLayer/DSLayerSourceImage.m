@@ -13,11 +13,16 @@
 
 - (id)initWithPath:(NSString*)path{
     if (self = [super init]){
-        NSLog(@"Init Image with path: %@",path);
-
         _image = [[NSImage alloc] initWithContentsOfFile:path];
         textureDefined=NO;
-        
+    }
+    return self;
+}
+
+- (id)initWithImage:(NSImage*)image{
+    if (self = [super init]){
+        _image = image;
+        textureDefined=NO;
     }
     return self;
 }

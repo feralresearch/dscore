@@ -16,6 +16,8 @@
 #import <OpenGL/glu.h>
 #import <Opengl/glext.h>
 #import <Syphon/Syphon.h>
+#import "NSImage+util.h"
+
 
 @implementation DSLayerView
 
@@ -24,8 +26,16 @@
     // and -initWithCoder: in this method
     [self setBackgroundColor:[[NSColor blackColor] colorUsingColorSpaceName:NSCalibratedRGBColorSpace] ];
     _overlayAlpha=0;
-    rotation = 0;
+    [self setRotation:0];
     [self setBackgroundColor:[[NSColor blackColor] colorUsingColorSpaceName:NSCalibratedRGBColorSpace]];
+    [self setShiftX:0];
+    [self setShiftY:0];
+    [self setScaleZ:1];
+    
+    [self setEnableLayerTransformWithTouchpad:NO];
+    [self setSyphonOutputName:nil];
+    
+    syphonFBO=-1;
 }
 
 - (id)initWithFrame:(CGRect)aRect{
@@ -42,25 +52,35 @@
     return self;
 }
 
--(float)alphaForLayer:(int)layerIndex{
+-(float)alphaForLayer:(long)layerIndex{
     DSLayer* layer = [_layers objectAtIndex:layerIndex];
     if(layer){
         return layer.alpha;
     }
     return -1;
 }
--(void)setAlpha:(float)alpha forLayer:(int)layerIndex{
+-(void)setAlpha:(float)alpha forLayer:(long)layerIndex{
     DSLayer* layer = [_layers objectAtIndex:layerIndex];
     if(layer){
         [layer setAlpha:alpha];
     }
 }
 
+-(void)scrollWheel:(NSEvent *)event{
+     [self setShiftY:self.shiftY+(event.deltaY)];
+    [self setShiftX:self.shiftX-(event.deltaX)];
+}
 
-// Rotate the entire view 90 degrees each time (will crop it)
--(void)rotateView{
-    rotation=rotation+90;
-    rotation=rotation>=360?0:rotation;
+-(void)magnifyWithEvent:(NSEvent *)event{
+    float minScale=0.1;
+    if(!_enableLayerTransformWithTouchpad){return;}
+    float newScale=self.scaleZ+(event.magnification);
+    [self setScaleZ:newScale<=minScale?minScale:newScale];
+}
+
+- (void)rotateWithEvent:(NSEvent *)event {
+    if(!_enableLayerTransformWithTouchpad){return;}
+    [self setRotation:_rotation+event.rotation];
 }
 
 
@@ -202,6 +222,16 @@
     currentContext = [self openGLContext];
     [currentContext makeCurrentContext];
     CGLLockContext([currentContext CGLContextObj]);
+    
+    /*
+    // SETUP Syphon FBO
+    if(syphonFBO == -1){
+        [self setSyphonOutputResolution:NSMakeSize(1024, 768)];
+        [self createFBO:syphonFBO
+             renderInto:syphonFBOTex
+                   size:_syphonOutputResolution withDepth:nil];
+    }
+     */
 
 
         // Reset Matrices (should only do this once)
@@ -218,20 +248,23 @@
         [self glClearScreenFor:self.frame.size];
 
 
-        // Apply rotation
-        glTranslatef(+(self.frame.size.width/2), +(self.frame.size.height/2), 0);
-        glRotatef(rotation, 0, 0, 1);
-        glTranslatef(-(self.frame.size.width/2), -(self.frame.size.height/2), 0);
 
+        // If we have at least one layer
         if([_layers count] > 0){
 
             //If the quad is going to be smaller than the window, split the extra space on either side
             DSLayer* firstLayer = [_layers firstObject];
-            for (DSLayer* layer in _layers){
-                if (!NSEqualSizes(layer.source.size, NSZeroSize)) {
-                    firstLayer=layer;
+            
+            // If the first layer size is 0,0 then use the next layer with actual dimensions
+            if(NSEqualSizes(firstLayer.source.size, NSZeroSize)){
+                for (DSLayer* layer in _layers){
+                    if (!NSEqualSizes(layer.source.size, NSZeroSize)) {
+                        firstLayer=layer;
+                    }
                 }
             }
+            
+            // Calculate offset and center the image
             float ratio = firstLayer.source.size.width/firstLayer.source.size.height;
             float maxWidth=self.frame.size.height*ratio;
             float maxHeight=maxWidth/ratio;
@@ -243,16 +276,21 @@
             if(self.frame.size.height > maxHeight){
                 offsetY = (self.frame.size.height-maxHeight)/2;
             }
-            glTranslatef(offsetX,offsetY,1.0);
-
-            // Set aspect
-            if(!NSEqualSizes(firstLayer.source.size, NSZeroSize)){
-                [self.window setAspectRatio:firstLayer.source.size];
-            }
-
+            glTranslatef(offsetX+_shiftX,offsetY+_shiftY,1.0);
+            
+            // Apply rotation
+            glTranslatef(+((self.frame.size.width*_scaleZ)/2), +((self.frame.size.height*_scaleZ)/2), 0);
+            glRotatef(_rotation, 0, 0, 1);
+            glTranslatef(-((self.frame.size.width*_scaleZ)/2), -((self.frame.size.height*_scaleZ)/2), 0);
+            
+            //gluPerspective (50.0*1.0, (float)self.frame.size.width/(float)self.frame.size.height, 20, 200);
+            
+            //Set aspect ratio to match screen
+            [self.window setAspectRatio:self.window.screen.frame.size];
             
             @synchronized(_layers){
                 for (DSLayer* layer in _layers){
+                    
                     // Syphon
                     if([layer.source isKindOfClass:[DSLayerSourceSyphon class]]){
 
@@ -264,38 +302,42 @@
                                                              type:syphonSourcedLayer.glTextureTarget
                                                              size:syphonSourcedLayer.size
                                                             alpha:layer.alpha
-                                                       resolution:NSMakeSize(maxWidth, maxHeight)];
+                                                       resolution:NSMakeSize(maxWidth*_scaleZ, maxHeight*_scaleZ)];
+                             
+                             
+                             
+                    
+                             
+                             
+                             
 
                          }else{
-                             NSLog(@"WARNING");
+                             NSLog(@"SYPHON WARNING");
+                             [self glDrawFullscreenQuadWithTexture:[syphonSourcedLayer glTextureForContext:self.openGLContext]
+                                                              type:syphonSourcedLayer.glTextureTarget
+                                                              size:syphonSourcedLayer.size
+                                                             alpha:layer.alpha
+                                                        resolution:NSMakeSize(maxWidth*_scaleZ, maxHeight*_scaleZ)];
                          }
                     
                     // Image
                     } else if([layer.source isKindOfClass:[DSLayerSourceImage class]]){
                         
-                        DSLayerSourceImage* imgSourcedLayer = (DSLayerSourceImage*)layer.source;
-                        
-                        
-                            
+                            DSLayerSourceImage* imgSourcedLayer = (DSLayerSourceImage*)layer.source;
                             [self glDrawFullscreenQuadWithTexture:[imgSourcedLayer glTextureForContext:self.openGLContext]
                                                              type:imgSourcedLayer.glTextureTarget
                                                              size:imgSourcedLayer.size
                                                             alpha:layer.alpha
-                                                       resolution:NSMakeSize(maxWidth, maxHeight)];
-                            
-               
-                        
+                                                       resolution:NSMakeSize(maxWidth*_scaleZ, maxHeight*_scaleZ)];
                     }
-                    
-                    
-                    
-                    
-                    
                 }
             }
             
+           
+            
         }
 
+    
 
         glFlush();
 
@@ -315,6 +357,9 @@
     glOrtho(0, resolution.width, 0, resolution.height, -1.0, 1.0);
     glViewport( 0, 0, resolution.width, resolution.height);
     glTranslatef(-1, -1, 0);
+    
+    
+
 
     // Clearscreen
     glClearColor([_backgroundColor redComponent],
@@ -530,22 +575,78 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
     CVDisplayLinkRelease(displayLink);
 }
 
-/*
- 
- - (BOOL)acceptsFirstResponder{
- return YES;
- }
 
-     // Pinch
-     - (void) magnifyWithEvent: (NSEvent*) event{
+-(void)syphonSendTexture:(GLuint)tex as:(NSString*)name{
+    
+    if(! [self openGLContext]){
+        NSLog(@"ERROR: Cannot send syphon without opengl context");
+        return;
+    }
+    
+    if(!syphonServer){
+        
+        syphonServer = [[SyphonServer alloc] initWithName:_syphonOutputName context:[[self openGLContext] CGLContextObj] options:nil];
+        if(!syphonServer){
+            NSLog(@"INTERNAL ERROR: Cannot initializing Syphon server in context");}
+    }
+    if(syphonServer.hasClients){
+        // Bind texture
+        glBindTexture(GL_TEXTURE_2D, tex);
+        
+        // Do whatever you want with the texture here...
+        [syphonServer publishFrameTexture:tex
+                            textureTarget:GL_TEXTURE_2D
+                              imageRegion:NSMakeRect(0,0,640,480)
+                        textureDimensions:NSMakeSize(640,480)
+                                  flipped:YES];
+        // Free the texture memory
+        glDeleteTextures(1, &tex);
+    }
+}
 
-     //CGFloat magnification = [event magnification];
-     //GLdouble factor = exp(magnification);
-
-     // NSLog(@"[GraphicView magnifyWithEvent:%@] magnification=%lf, factor=%lf", event, magnification, factor);
-
-     //[self zoomFactor:factor];
-     }
-*/
+// Create a FBO for offscreen rendering
+-(void)createFBO:(GLuint)renderFbo
+      renderInto:(GLuint)renderTexture
+            size:(NSSize)renderSize
+       withDepth:(NSNumber*)renderDepthBuffer{
+    
+    // Sanity check
+    if(!renderSize.width >0){NSLog(@"INTERNAL ERROR: Cannot create FBO with zero dimensions");return;}
+    
+    // Bind
+    glBindFramebuffer(GL_FRAMEBUFFER, renderFbo);
+    glBindTexture(GL_TEXTURE_RECTANGLE_ARB, renderTexture);
+    
+    // Give an empty image to OpenGL ( the last "0" )
+    glTexImage2D(GL_TEXTURE_RECTANGLE_ARB, 0,GL_RGBA, renderSize.width,renderSize.height, 0,GL_RGBA, GL_UNSIGNED_BYTE, 0);
+    
+    // FIXME: I don't know what this does (something mipmap)
+    glTexParameteri(GL_TEXTURE_RECTANGLE_ARB, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_RECTANGLE_ARB, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameterf(GL_TEXTURE_RECTANGLE_ARB, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameterf(GL_TEXTURE_RECTANGLE_ARB, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    
+    // Optional depth buffer
+    if(renderDepthBuffer){
+        GLuint fboDepthrenderbuffer = [renderDepthBuffer intValue];
+        glGenRenderbuffers(1, &fboDepthrenderbuffer);
+        glBindRenderbuffer(GL_RENDERBUFFER, fboDepthrenderbuffer);
+        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, renderSize.width,renderSize.height);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, fboDepthrenderbuffer);
+    }
+    
+    // Set "renderedTexture" as our colour attachement #0
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_RECTANGLE_ARB, renderTexture, 0);
+    
+    // Set the list of draw buffers.
+    GLenum DrawBuffers[1] = {GL_COLOR_ATTACHMENT0};
+    glDrawBuffers(1, DrawBuffers); // "1" is the size of DrawBuffers
+    
+    // Always check that our framebuffer is ok
+    if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE){
+        NSLog(@"ERROR: Framebuffer not ok");
+    }
+    
+}
 
 @end

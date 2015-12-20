@@ -80,7 +80,6 @@
                                       initWithServerDescription:thisSyphonServer
                                       options:nil
                                       newFrameHandler:^(SyphonClient *client) {[self newFrameAvailableFor:thisSource];}];
-            thisSource.preview = [thisSyphonServer objectForKey:SyphonServerDescriptionIconKey];
             thisSource.hasWarning=FALSE;
         }
 

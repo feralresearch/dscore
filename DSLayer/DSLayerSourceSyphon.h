@@ -28,4 +28,5 @@
 -(NSSize) glTextureSize;
 -(NSSize) size;
 -(NSImage*)stillFrame;
+-(NSImage*)sourceIcon;
 @end

@@ -22,7 +22,8 @@
 
         // create an input port for receiving OSC data
         if(inPort){
-            [manager createNewInputForPort:(int)[inPort integerValue]];
+            OSCInPort* inputPort = [manager createNewInputForPort:(int)[inPort integerValue]];
+            [self setBindError:!inputPort];
         }
 
         // create an output so i can send OSC data to myself
@@ -34,6 +35,11 @@
 
     }
     return self;
+}
+
+-(void)shutdown{
+    [manager deleteAllInputs];
+    [manager deleteAllOutputs];
 }
 
 

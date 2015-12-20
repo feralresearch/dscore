@@ -49,11 +49,15 @@
 
 - (id)initWithCoder:(NSCoder *)coder{
     if (self = [super init]) {
-
         name = [coder decodeObjectForKey:@"name"];
     }
     return self;
 }
+
+-(NSImage*)sourceIcon{
+    return [[_syphonClient serverDescription] objectForKey:SyphonServerDescriptionIconKey];
+}
+
 
 
 @end

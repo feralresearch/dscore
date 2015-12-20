@@ -6,26 +6,36 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Syphon/Syphon.h>
 @class DSLayer;
-
-
+@class  SyphonServer;
 
 @interface DSLayerView : NSOpenGLView{
     const CVTimeStamp *cvOutputTime;
-
     int syphonServerCount;
     NSRect parentWindowRect;
-    float rotation;    
     CVDisplayLinkRef displayLink;
+    SyphonServer *syphonServer;
+    
+    GLuint syphonFBO;
+    GLuint syphonFBOTex;
+    
 }
 @property NSWindow* myWindow;
 @property NSColor *backgroundColor;
 @property float overlayAlpha;
+@property float shiftX;
+@property float shiftY;
+@property float scaleZ;
+@property float rotation;
 @property (readonly) BOOL isFullscreen;
 @property (readonly) NSMutableArray *layers;
+@property BOOL enableLayerTransformWithTouchpad;
+
+@property NSString* syphonOutputName;
+@property NSSize syphonOutputResolution;
 
 -(void)toggleFullscreen;
--(void)rotateView;
 
 -(void)removeAllLayers;
 -(DSLayer*)addEmptyLayer;
@@ -44,8 +54,8 @@
 -(DSLayer*)replaceLayer:(int)layerIndex withVideoLayer:(NSString*)path;
 
 
--(float)alphaForLayer:(int)layerIndex;
--(void)setAlpha:(float)alpha forLayer:(int)layerIndex;
+-(float)alphaForLayer:(long)layerIndex;
+-(void)setAlpha:(float)alpha forLayer:(long)layerIndex;
 
 @end
 

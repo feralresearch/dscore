@@ -18,6 +18,7 @@
 @property NSString* path;
 
 - (id)initWithPath:(NSString*)path;
+- (id)initWithImage:(NSImage*)image;
 -(GLuint) glTextureForContext:(NSOpenGLContext*)context;
 -(GLuint) glTextureTarget;
 -(NSSize) glTextureSize;

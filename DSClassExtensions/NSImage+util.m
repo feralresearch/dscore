@@ -8,6 +8,8 @@
 
 #import "NSImage+util.h"
 #import <AppKit/AppKit.h>
+#import <OpenGL/OpenGL.h>
+#import <OpenGL/glu.h>
 
 @implementation NSImage (util)
 
@@ -204,4 +206,132 @@
     return NSMakeSize(width,height);
 }
 
+-(void)loadIntoTexture:(GLuint)glTexture withContext:(NSOpenGLContext*)openGLContext{
+    
+    // If we are passed an empty image, just quit
+    NSImage *inputImage=self;
+    if (inputImage == nil){return;}
+    
+    
+    CGLLockContext([openGLContext CGLContextObj]);
+    [openGLContext makeCurrentContext];
+    
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, glTexture);
+    
+    
+    //  Aquire and flip the data
+    NSSize imageSize = inputImage.size;
+    if (![inputImage isFlipped]) {
+        NSImage *drawImage = [[NSImage alloc] initWithSize:imageSize];
+        NSAffineTransform *transform = [NSAffineTransform transform];
+        
+        [drawImage lockFocus];
+        
+        [transform translateXBy:0 yBy:imageSize.height];
+        [transform scaleXBy:1 yBy:-1];
+        [transform concat];
+        
+        [inputImage drawAtPoint:NSZeroPoint
+                       fromRect:(NSRect){NSZeroPoint, imageSize}
+                      operation:NSCompositeCopy
+                       fraction:1];
+        
+        [drawImage unlockFocus];
+        
+        inputImage = drawImage;
+    }
+    
+    // THIS iS SLOOOOW
+    NSBitmapImageRep* bitmap = [[NSBitmapImageRep alloc] initWithData:[inputImage TIFFRepresentation]];
+    
+    //  Now make a texture out of the bitmap data
+    // Set proper unpacking row length for bitmap.
+    glPixelStorei(GL_UNPACK_ROW_LENGTH, (GLint)[bitmap pixelsWide]);
+    
+    // Set byte aligned unpacking (needed for 3 byte per pixel bitmaps).
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    
+    NSInteger samplesPerPixel = [bitmap samplesPerPixel];
+    
+    // Nonplanar, RGB 24 bit bitmap, or RGBA 32 bit bitmap.
+    if(![bitmap isPlanar] && (samplesPerPixel == 3 || samplesPerPixel == 4)) {
+        
+        // Create one OpenGL texture
+        glTexImage2D(GL_TEXTURE_2D, 0,
+                     GL_RGBA,//samplesPerPixel == 4 ? GL_RGBA8 : GL_RGB8,
+                     (GLint)[bitmap pixelsWide],
+                     (GLint)[bitmap pixelsHigh],
+                     0,
+                     GL_RGBA,//samplesPerPixel == 4 ? GL_RGBA : GL_RGB,
+                     GL_UNSIGNED_BYTE,
+                     [bitmap bitmapData]);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+    }else{
+        [[NSException exceptionWithName:@"ImageFormat" reason:@"Unsupported image format" userInfo:nil] raise];
+    }
+    CGLUnlockContext([openGLContext CGLContextObj]);
+}
+
++(NSImage*)imageWithGLTexture:(GLuint)glTexture
+                  textureType:(GLuint)target
+                  textureSize:(NSSize)imageSize
+                      context:(NSOpenGLContext*)openGLContext
+                      flipped:(BOOL)flipped{
+    
+    // If we have no size, just exit
+    if(imageSize.width == 0){return nil;}
+    
+    
+    CGLLockContext([openGLContext CGLContextObj]);
+    [openGLContext makeCurrentContext];
+    
+    NSImage *image=[[NSImage alloc] initWithSize:NSMakeSize(
+                                                            imageSize.width,
+                                                            imageSize.height)];
+    
+    
+    
+    
+    NSBitmapImageRep *imageRep = [[NSBitmapImageRep alloc]
+                                  initWithBitmapDataPlanes:NULL
+                                  pixelsWide:imageSize.width
+                                  pixelsHigh:imageSize.height
+                                  bitsPerSample:8
+                                  samplesPerPixel:4
+                                  hasAlpha:YES
+                                  isPlanar:NO
+                                  colorSpaceName:NSDeviceRGBColorSpace
+                                  bytesPerRow:4 * imageSize.width
+                                  bitsPerPixel:0
+                                  ];
+    
+    
+    glBindTexture(target, glTexture);
+    
+        glGetTexImage(target,
+                  0,
+                  GL_RGBA,
+                  GL_UNSIGNED_BYTE,
+                  [imageRep bitmapData]);
+    
+    
+    [image addRepresentation:imageRep];
+    [image setFlipped:flipped];
+    [image lockFocusOnRepresentation:imageRep];
+    [image unlockFocus];
+    
+    
+    
+    CGLUnlockContext([openGLContext CGLContextObj]);
+    return image;
+}
 @end

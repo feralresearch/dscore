@@ -47,10 +47,21 @@
         _syphonSource.syphonImage = [_syphonSource.syphonClient newFrameImageForContext:[context CGLContextObj]];
         tex=_syphonSource.syphonImage.textureName;
         
-        if(!frameCapture){
-            
-            frameCapture = [NSImage imageWithGLTexture:self.glTexture textureType:self.glTextureTarget textureSize:self.glTextureSize context:context flipped:NO];
-        }
+       /* if(!frameCapture){
+
+            frameCapture = [NSImage imageWithGLTexture:_syphonSource.syphonImage.textureName
+                                           textureType:GL_TEXTURE_RECTANGLE_ARB
+                                           textureSize:_syphonSource.syphonImage.textureSize
+                                               context:context
+                                               flipped:NO];
+        }*/
+        
+        
+     
+
+        
+        
+        
     }
     return tex;
 }
@@ -60,9 +71,11 @@
 -(void) dealloc{[[NSNotificationCenter defaultCenter] removeObserver:self];}
 
 -(NSImage*)stillFrame{
-
     return frameCapture;
 }
 
+-(NSImage*)sourceIcon{
+    return [_syphonSource.syphonClient.serverDescription valueForKey:@"SyphonServerDescriptionIconKey"];
+}
 
 @end

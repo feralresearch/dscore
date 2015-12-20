@@ -19,7 +19,7 @@
 @property NSString* displayName;
 @property NSDate* lastSeen;
 @property NSDate* lastFrame;
-@property NSImage* preview;
+
 
 @property BOOL hasWarning;
 @property BOOL didCrash;
@@ -30,6 +30,6 @@
 
 -(NSString*)name;
 -(void)setName:(NSString*)newName;
-
+-(NSImage*)sourceIcon;
 
 @end
