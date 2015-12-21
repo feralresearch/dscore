@@ -5,7 +5,10 @@
 //  Created by Andrew on 11/21/15.
 //  Copyright © 2015 Digital Scenographic. All rights reserved.
 //
-
+#import <Foundation/Foundation.h>
+#import <OpenGL/OpenGL.h>
+#import <OpenGL/glu.h>
+#import <Opengl/glext.h>
 #import "DSLayerSource.h"
 
 @implementation DSLayerSource

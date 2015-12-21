@@ -67,6 +67,7 @@
 		toTarget:self
 		withObject:nil];
 }
+-(void)doNothing{}
 - (void) threadCallback	{
 	//NSLog(@"%s",__func__);
 	NSAutoreleasePool		*pool = [[NSAutoreleasePool alloc] init];
@@ -86,8 +87,8 @@
 	//	add a one-year timer to the run loop, so it will run & pause when i tell the run loop to run
 	[NSTimer
 		scheduledTimerWithTimeInterval:60.0*60.0*24.0*7.0*52.0
-		target:nil
-		selector:nil
+		target:self
+		selector:@selector(doNothing)
 		userInfo:nil
 		repeats:NO];
 	OSSpinLockUnlock(&valLock);

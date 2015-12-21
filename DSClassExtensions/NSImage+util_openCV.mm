@@ -4,7 +4,7 @@
 #include <opencv2/opencv.hpp>
 #import <AppKit/AppKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import "NSImage+util_openCV.h"
+#import "NSImage+util_openCV.hh"
 
 
 // This is a "category" style extension to the NSImage class

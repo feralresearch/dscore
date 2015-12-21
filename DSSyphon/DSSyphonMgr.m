@@ -10,6 +10,7 @@
  
 */
 //
+#import <Foundation/Foundation.h>
 #import "DSSyphonMgr.h"
 #import <Syphon/Syphon.h>
 #import "DSSyphonSource.h"

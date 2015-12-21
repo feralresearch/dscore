@@ -10,8 +10,10 @@
 //
 //  Creates a singleton manager object, under which may live one or more "Boxes" to which are connected "Lamps"
 
+
 #import "DSDMXManager.h"
 #import "DSDMXBox.h"
+#include "DSDMXLamp.h"
 
 @implementation DSDMXManager
 

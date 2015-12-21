@@ -7,6 +7,7 @@
 //
 #import <Cocoa/Cocoa.h>
 #import "DSLayerSource.h"
+
 @class NSOpenGLContext;
 
 @interface DSLayerSourceImage : DSLayerSource{

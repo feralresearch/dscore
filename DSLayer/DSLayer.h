@@ -6,7 +6,8 @@
 //  Copyright © 2015 Digital Scenographic. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+
+
 @class DSLayerSource;
 @class DSLayerTransformation;
 

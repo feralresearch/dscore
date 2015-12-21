@@ -5,10 +5,9 @@
 //  Copyright © 2015 Digital Scenographic. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-#import <Syphon/Syphon.h>
+
 @class DSLayer;
-@class  SyphonServer;
+@class SyphonServer;
 
 @interface DSLayerView : NSOpenGLView{
     const CVTimeStamp *cvOutputTime;

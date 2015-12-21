@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #include "Ftd2xx.h"
-#include "DSDMXBox.h"
-#include "DSDMXLamp.h"
+@class DSDMXBox;
 
 // Enttec Pro definitions
 #define GET_WIDGET_PARAMS 3

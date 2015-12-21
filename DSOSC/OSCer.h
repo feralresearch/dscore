@@ -6,8 +6,7 @@
 //  Copyright © 2015 Digital Scenographic. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <VVOSC/VVOSC.h>
+
 
 @interface OSCer : NSObject{
     OSCManager* manager;

@@ -6,14 +6,14 @@
 //  Copyright © 2015 Digital Scenographic. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <VVOSC/VVOSC.h>
+
+@class OSCMessage;
+@class OSCOutPort;
+@class OSCManager;
+
 @class AppDelegate;
 
-@protocol OSCerDelegate <NSObject>
-    - (void) receivedOSCMessage:(OSCMessage *)m;
-@end
-
+#include "OSCerProtocol.h"
 
 @interface DSOSCMgr : NSObject{
     OSCManager* manager;

@@ -6,10 +6,11 @@
 //  Copyright © 2015 Digital Scenographic. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+#import "OSCerProtocol.h"
 #import "DSOSCMgr.h"
-#import "AppDelegate.h"
 #import <VVOSC/VVOSC.h>
-
+#import "OSCer.h"
 @implementation DSOSCMgr
 @synthesize delegate;
 

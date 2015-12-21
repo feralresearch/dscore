@@ -5,6 +5,7 @@
 //  Copyright © 2015 Digital Scenographic. All rights reserved.
 //
 
+#import <Cocoa/Cocoa.h>
 #import "DSLayerView.h"
 #import "DSLayer.h"
 #import "DSLayerSource.h"
@@ -12,6 +13,7 @@
 #import "DSSyphonSource.h"
 #import "DSLayerSourceImage.h"
 #import "DSLayerSourceVideo.h"
+
 #import <OpenGL/OpenGL.h>
 #import <OpenGL/glu.h>
 #import <Opengl/glext.h>

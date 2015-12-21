@@ -6,6 +6,9 @@
 //  Copyright © 2015 Digital Scenographic. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+#import "DSLayerSource.h"
+#import "DSLayerTransformation.h"
 #import "DSLayer.h"
 #import "DSLayerTransformation.h"
 #import "DSLayerSourceSyphon.h"

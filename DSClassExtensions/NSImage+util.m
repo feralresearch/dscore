@@ -222,7 +222,9 @@
     
     //  Aquire and flip the data
     NSSize imageSize = inputImage.size;
-    if (![inputImage isFlipped]) {
+    //FIXME:
+    // Commented out the isFlipped
+    //if (![inputImage isFlipped]) {
         NSImage *drawImage = [[NSImage alloc] initWithSize:imageSize];
         NSAffineTransform *transform = [NSAffineTransform transform];
         
@@ -240,7 +242,7 @@
         [drawImage unlockFocus];
         
         inputImage = drawImage;
-    }
+    //}
     
     // THIS iS SLOOOOW
     NSBitmapImageRep* bitmap = [[NSBitmapImageRep alloc] initWithData:[inputImage TIFFRepresentation]];
@@ -325,8 +327,15 @@
     
     
     [image addRepresentation:imageRep];
-    [image setFlipped:flipped];
-    [image lockFocusOnRepresentation:imageRep];
+
+    //FIXME: Commented these out to avoid warnings
+    //[image setFlipped:flipped];
+    // This was replaced with two lines below
+    // [image lockFocusOnRepresentation:imageRep];
+    
+    [image lockFocus];
+    [imageRep drawInRect:NSMakeRect(0, 0, image.size.width, image.size.height)];
+    
     [image unlockFocus];
     
     

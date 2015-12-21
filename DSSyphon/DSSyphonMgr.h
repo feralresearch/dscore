@@ -8,7 +8,6 @@
 
 
 // FIXME: should be made into singleton
-#import <Foundation/Foundation.h>
 
 
 @protocol SyphonDelegate <NSObject>

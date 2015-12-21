@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#include "Ftd2xx.h"
+#include "ftd2xx.h"
 @class DSDMXManager;
 
 @interface DSDMXBox : NSObject{}

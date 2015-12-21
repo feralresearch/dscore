@@ -5,7 +5,8 @@
 //  Created by Andrew on 11/11/15.
 //  Copyright © 2015 Digital Scenographic. All rights reserved.
 //
-
+#import <Foundation/Foundation.h>
+#import <VVOSC/VVOSC.h>
 #import "OSCer.h"
 
 @implementation OSCer

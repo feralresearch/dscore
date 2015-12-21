@@ -6,8 +6,9 @@
 //  Copyright © 2015 Digital Scenographic. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <Syphon/Syphon.h>
+
+@class SyphonImage;
+@class SyphonClient;
 
 @interface DSSyphonSource : NSObject{
     NSString* name;
