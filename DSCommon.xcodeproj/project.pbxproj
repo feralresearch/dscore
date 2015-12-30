@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4905DFDC1C277653001A60E1 /* DSLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4905DFDA1C277653001A60E1 /* DSLayer.m */; settings = {ASSET_TAGS = (); }; };
+		4915D3CA1C33140A00BD7E27 /* ftd2xx.h in Headers */ = {isa = PBXBuildFile; fileRef = 4915D3C91C33140A00BD7E27 /* ftd2xx.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		493A07471C2734B200199A52 /* NSImage+util.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A07431C2734B200199A52 /* NSImage+util.m */; settings = {ASSET_TAGS = (); }; };
 		493A07521C2734BC00199A52 /* DSDMXBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A074C1C2734BC00199A52 /* DSDMXBox.m */; settings = {ASSET_TAGS = (); }; };
 		493A07541C2734BC00199A52 /* DSDMXLamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A074E1C2734BC00199A52 /* DSDMXLamp.m */; settings = {ASSET_TAGS = (); }; };
@@ -290,6 +291,7 @@
 /* Begin PBXFileReference section */
 		4905DFD91C277653001A60E1 /* DSLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLayer.h; sourceTree = "<group>"; };
 		4905DFDA1C277653001A60E1 /* DSLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLayer.m; sourceTree = "<group>"; };
+		4915D3C91C33140A00BD7E27 /* ftd2xx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftd2xx.h; path = Frameworks/ftd2xx.h; sourceTree = "<group>"; };
 		493A07311C27336E00199A52 /* DSCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DSCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		493A07341C27336E00199A52 /* DSCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSCommon.h; sourceTree = "<group>"; };
 		493A07361C27336E00199A52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 		49B3A41C1C27378700EB54D4 /* Frameworks/Libs */ = {
 			isa = PBXGroup;
 			children = (
+				4915D3C91C33140A00BD7E27 /* ftd2xx.h */,
 				49B3A44F1C273B2E00EB54D4 /* libftd2xx.1.2.2.dylib */,
 				49B3A4531C273BF900EB54D4 /* libz.dylib */,
 				49B3A4211C2737AB00EB54D4 /* libopencv_calib3d.a */,
@@ -577,6 +580,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4915D3CA1C33140A00BD7E27 /* ftd2xx.h in Headers */,
 				496572D51C27798A0027A429 /* DSCommon.h in Headers */,
 				49E230B81C278A2F0055EF53 /* OSCerProtocol.h in Headers */,
 				496572D61C2779BC0027A429 /* DSSyphonMgr.h in Headers */,

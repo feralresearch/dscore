@@ -15,6 +15,7 @@
 
 
 @property NSString* name;
+@property BOOL warning;
 
 -(GLuint) glTextureTarget;
 -(GLuint) glTexture;

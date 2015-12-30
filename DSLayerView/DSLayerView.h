@@ -4,6 +4,12 @@
 //  Created by Andrew on 11/12/15.
 //  Copyright © 2015 Digital Scenographic. All rights reserved.
 //
+/*
+
+ If creating from the IB, add an OpenGLView and then change the class 
+ (custom view doesn't work properly)
+ 
+*/
 
 
 @class DSLayer;

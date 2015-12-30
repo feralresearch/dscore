@@ -51,7 +51,7 @@
     white=white<0?0:white;
     white=white>255?255:white;
     
-    NSLog(@"Set #%i, (%i,%i,%i | %i)",_address,red,green,blue,white);
+    //NSLog(@"Set #%i, (%i,%i,%i | %i)",_address,red,green,blue,white);
     
     
         unsigned char myDmx[DMX_DATA_LENGTH];

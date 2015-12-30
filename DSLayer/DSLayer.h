@@ -11,7 +11,9 @@
 @class DSLayerSource;
 @class DSLayerTransformation;
 
-@interface DSLayer : NSObject
+@interface DSLayer : NSObject{
+    BOOL _loop;
+}
 
 @property NSMutableArray* filters;
 @property float alpha;     
@@ -22,5 +24,8 @@
 -(id)initWithPath:(NSString*)path;
 -(id)initWithPlaceholder;
 -(NSString*)sourceType;
+
+-(BOOL)loop;
+-(void)setLoop:(BOOL)loop;
 
 @end

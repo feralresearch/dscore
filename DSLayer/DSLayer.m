@@ -79,4 +79,23 @@
     }
 }
 
+-(BOOL)loop{
+    if([_source isKindOfClass:[DSLayerSourceVideo class]]){
+        DSLayerSourceVideo* vSource=(DSLayerSourceVideo*)_source;
+        return vSource.loop;
+    }else{
+        NSLog(@"WARNING: Layer does not support looping");
+    }
+    return NO;
+}
+-(void)setLoop:(BOOL)loop{
+    if([_source isKindOfClass:[DSLayerSourceVideo class]]){
+        DSLayerSourceVideo* vSource=(DSLayerSourceVideo*)_source;
+        [vSource setLoop:loop];
+    }else{
+        NSLog(@"WARNING: Layer does not support looping");
+    }
+}
+
+
 @end

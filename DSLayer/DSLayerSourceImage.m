@@ -50,7 +50,6 @@
 
 -(void)dealloc{
     _image=nil;
-    NSLog(@"DEALLOC");
 }
 
 @end

@@ -146,7 +146,7 @@
 - (SyphonImage *)newFrameImageForContext:(CGLContextObj)cgl_ctx
 {
 	OSSpinLockLock(&_lock);
-	_lastFrameID = [(SyphonClientConnectionManager *)_connectionManager frameID];
+	_lastFrameID = (int)[(SyphonClientConnectionManager *)_connectionManager frameID];
 	SyphonImage *frame = [(SyphonClientConnectionManager *)_connectionManager newFrameForContext:cgl_ctx];
 	OSSpinLockUnlock(&_lock);
 	return frame;

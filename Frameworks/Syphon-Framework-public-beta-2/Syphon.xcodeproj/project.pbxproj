@@ -559,7 +559,7 @@
 				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = "";
 				LD_DYLIB_INSTALL_NAME = "@rpath/Syphon.framework/Versions/A/Syphon";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "info.v002.${PRODUCT_NAME:rfc1034Identifier}";
 				PRODUCT_NAME = Syphon;
@@ -583,7 +583,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "";
 				LD_DYLIB_INSTALL_NAME = "@rpath/Syphon.framework/Versions/A/Syphon";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "info.v002.${PRODUCT_NAME:rfc1034Identifier}";
 				PRODUCT_NAME = Syphon;
 				WRAPPER_EXTENSION = framework;
@@ -707,7 +707,7 @@
 				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = "";
 				LD_DYLIB_INSTALL_NAME = "@rpath/Syphon.framework/Versions/A/Syphon";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "info.v002.${PRODUCT_NAME:rfc1034Identifier}";
 				PRODUCT_NAME = Syphon;
 				WRAPPER_EXTENSION = framework;

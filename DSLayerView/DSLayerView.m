@@ -143,7 +143,7 @@
 }
 
 -(DSLayer*)addVideoLayer:(NSString *)path{
-    return [self addImageLayer:path];
+    return [self addVideoLayer:path withAlpha:1.0];
 }
 -(DSLayer*)addVideoLayer:(NSString *)path withAlpha:(float)alpha{
     return [self addImageLayer:path withAlpha:alpha];
@@ -331,6 +331,21 @@
                                                              size:imgSourcedLayer.size
                                                             alpha:layer.alpha
                                                        resolution:NSMakeSize(maxWidth*_scaleZ, maxHeight*_scaleZ)];
+
+                    // Video
+                    } else if([layer.source isKindOfClass:[DSLayerSourceVideo class]]){
+                        
+                        DSLayerSourceVideo* videoSourcedLayer = (DSLayerSourceVideo*)layer.source;
+                        if(cvOutputTime){
+                            GLuint texture = [videoSourcedLayer glTextureForContext:self.openGLContext atTime:cvOutputTime];
+                            [self glDrawFullscreenQuadWithTexture:texture
+                                                             type:GL_TEXTURE_RECTANGLE_ARB
+                                                             size:videoSourcedLayer.size
+                                                            alpha:layer.alpha
+                                                       resolution:NSMakeSize(maxWidth*_scaleZ, maxHeight*_scaleZ)];
+                            
+                        }
+
                     }
                 }
             }
@@ -563,6 +578,8 @@
 // This is the renderer output callback function
 static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeStamp* now, const CVTimeStamp* outputTime, CVOptionFlags flagsIn, CVOptionFlags* flagsOut, void* displayLinkContext){
     CVReturn result = [(__bridge DSLayerView*)displayLinkContext getFrameForTime:outputTime];
+    DSLayerView *self = (__bridge DSLayerView *)displayLinkContext;
+    self->cvOutputTime = outputTime;
     return result;
 }
 

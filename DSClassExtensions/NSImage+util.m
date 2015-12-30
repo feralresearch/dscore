@@ -283,6 +283,106 @@
     CGLUnlockContext([openGLContext CGLContextObj]);
 }
 
+
+/*
+ //https://developer.apple.com/library/mac/documentation/GraphicsImaging/Conceptual/OpenGL-MacProgGuide/opengl_offscreen/opengl_offscreen.html
+//http://www.bit-101.com/blog/?p=1861
++(NSImage*)imageWithGLTexture:(GLuint)glTexture
+                  textureType:(GLuint)target
+                  textureSize:(NSSize)imageSize
+                      context:(NSOpenGLContext*)openGLContext
+                      flipped:(BOOL)flipped{
+    
+    // If we have no size, just exit
+    if(imageSize.width == 0){return nil;}
+    
+    
+    CGLLockContext([openGLContext CGLContextObj]);
+    [openGLContext makeCurrentContext];
+    
+    
+    
+    NSInteger myDataLength = imageSize.width * imageSize.height * 4;
+    
+    // allocate array and read pixels into it.
+    GLubyte *buffer = (GLubyte *) malloc(myDataLength);
+    glBindTexture(target, glTexture);
+
+    
+    //////////
+    //Generate a new FBO. It will contain your texture.
+    GLuint offscreen_framebuffer;
+    glGenFramebuffers(1, &offscreen_framebuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, offscreen_framebuffer);
+    
+    //Create the texture
+    //glGenTextures(1, &my_texture);
+    glBindTexture(target,glTexture);
+    //glTexImage2D(target, 0, GL_RGBA,  imageSize.width, imageSize.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+
+    
+    //Bind the texture to your FBO
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, target, glTexture, 0);
+    
+    //Test if everything failed
+    GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+    if(status != GL_FRAMEBUFFER_COMPLETE) {
+        printf("failed to make complete framebuffer object %x", status);
+    }
+   
+    
+    //Bind the FBO
+    glBindFramebuffer(GL_FRAMEBUFFER, offscreen_framebuffer);
+    // set the viewport as the FBO won't be the same dimension as the screen
+    //glViewport(0, 0, imageSize.width, imageSize.height);
+    
+    GLubyte* pixels = (GLubyte*) malloc(imageSize.width * imageSize.height * sizeof(GLubyte) * 4);
+    glReadPixels(0, 0, imageSize.width, imageSize.height, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+    
+    ///////////
+    
+    //Bind your main FBO again
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    // set the viewport as the FBO won't be the same dimension as the screen
+    //glViewport(0, 0, screen_width, screen_height);
+    
+    
+    // gl renders "upside down" so swap top to bottom into new array.
+    // there's gotta be a better way, but this works.
+    GLubyte *buffer2 = (GLubyte *) malloc(myDataLength);
+    for(int y = 0; y < imageSize.height; y++)
+    {
+        for(int x = 0; x < imageSize.width * 4; x++)
+        {
+            buffer2[(479 - y) * (int)imageSize.width * 4 + x] = buffer[y * 4 * (int)imageSize.width + x];
+        }
+    }
+    
+    // make data provider with data.
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer2, myDataLength, NULL);
+    
+    // prep the ingredients
+    int bitsPerComponent = 8;
+    int bitsPerPixel = 32;
+    int bytesPerRow = 4 * imageSize.width;
+    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault;
+    CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
+    
+    // make the cgimage
+    CGImageRef imageRef = CGImageCreate(imageSize.width, imageSize.height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
+    
+    // then make the uiimage from that
+    NSImage *image = [[NSImage alloc] initWithCGImage:imageRef size:NSMakeSize(imageSize.width, imageSize.height)];
+    
+    
+    
+    
+    CGLUnlockContext([openGLContext CGLContextObj]);
+    return image;
+}
+
+
 +(NSImage*)imageWithGLTexture:(GLuint)glTexture
                   textureType:(GLuint)target
                   textureSize:(NSSize)imageSize
@@ -328,19 +428,124 @@
     
     [image addRepresentation:imageRep];
 
-    //FIXME: Commented these out to avoid warnings
-    //[image setFlipped:flipped];
-    // This was replaced with two lines below
-    // [image lockFocusOnRepresentation:imageRep];
+  
     
     [image lockFocus];
     [imageRep drawInRect:NSMakeRect(0, 0, image.size.width, image.size.height)];
-    
     [image unlockFocus];
     
+ 
+     //[image addRepresentation:imageRep];
+     //[image setFlipped:flipped];
+     //[image lockFocusOnRepresentation:imageRep];
+     //[image unlockFocus];
+ 
     
     
     CGLUnlockContext([openGLContext CGLContextObj]);
     return image;
+}
+
+
+/*
+ 
+ http://www.bobbygeorgescu.com/2011/08/finding-average-color-of-uiimage/
+ 
+- (NSColor *)averageColor {
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    unsigned char rgba[4];
+    CGContextRef context = CGBitmapContextCreate(rgba, 1, 1, 8, 4, colorSpace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    
+    
+    CGImageSourceRef source = CGImageSourceCreateWithData((CFDataRef)[self TIFFRepresentation], NULL);
+    CGImageRef maskRef =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
+    
+    CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), source);
+    CGColorSpaceRelease(colorSpace);
+    CGContextRelease(context);
+    
+    if(rgba[3] &gt; 0) {
+        CGFloat alpha = ((CGFloat)rgba[3])/255.0;
+        CGFloat multiplier = alpha/255.0;
+        return [UIColor colorWithRed:((CGFloat)rgba[0])*multiplier
+                               green:((CGFloat)rgba[1])*multiplier
+                                blue:((CGFloat)rgba[2])*multiplier
+                               alpha:alpha];
+    }
+    else {
+        return [UIColor colorWithRed:((CGFloat)rgba[0])/255.0
+                               green:((CGFloat)rgba[1])/255.0
+                                blue:((CGFloat)rgba[2])/255.0
+                               alpha:((CGFloat)rgba[3])/255.0];
+    }
+}
+ */
+
+
+
++(NSImage*)imageWithGLTexture:(GLuint)glTexture
+                  textureType:(GLuint)target
+                  textureSize:(NSSize)imageSize
+                      context:(NSOpenGLContext*)openGLContext
+                      flipped:(BOOL)flipped{
+    
+    
+    int height = imageSize.height;
+    int width = imageSize.width;
+    
+    NSBitmapImageRep *imageRep = [[NSBitmapImageRep alloc]
+                                  initWithBitmapDataPlanes:NULL
+                                  pixelsWide:width
+                                  pixelsHigh:height
+                                  bitsPerSample:8
+                                  samplesPerPixel:4
+                                  hasAlpha:YES
+                                  isPlanar:NO
+                                  colorSpaceName:NSDeviceRGBColorSpace
+                                  bytesPerRow:4 * width
+                                  bitsPerPixel:0
+                                  ];
+    
+    // This call is crucial, to ensure we are working with the correct context
+    [openGLContext makeCurrentContext];
+    
+    GLuint framebuffer, renderbuffer;
+    GLenum status;
+    // Set the width and height appropriately for your image
+    GLuint imageWidth = width, imageHeight = height;
+    //Set up a FBO with one renderbuffer attachment
+    glGenFramebuffersEXT(1, &framebuffer);
+    glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, framebuffer);
+    glGenRenderbuffersEXT(1, &renderbuffer);
+    glBindRenderbufferEXT(GL_RENDERBUFFER_EXT, renderbuffer);
+    glRenderbufferStorageEXT(GL_RENDERBUFFER_EXT, GL_RGBA8, imageWidth, imageHeight);
+    glFramebufferRenderbufferEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT,
+                                 GL_RENDERBUFFER_EXT, renderbuffer);
+    status = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
+    if (status != GL_FRAMEBUFFER_COMPLETE_EXT){
+        // Handle errors
+    }
+    //Your code to draw content to the renderbuffer
+    //[self drawRect:[self bounds]];
+    
+    
+    //Your code to use the contents
+    glReadPixels(0, 0, width, height,
+                 GL_RGBA, GL_UNSIGNED_BYTE, [imageRep bitmapData]);
+    
+    // Make the window the target
+    glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+    // Delete the renderbuffer attachment
+    glDeleteRenderbuffersEXT(1, &renderbuffer);
+    
+    NSImage *image=[[NSImage alloc] initWithSize:NSMakeSize(width,height)];
+    [image addRepresentation:imageRep];
+    [image setFlipped:YES];
+    [image lockFocusOnRepresentation:imageRep]; // This will flip the rep.
+    [image unlockFocus];
+    
+    return image;
+    
 }
 @end
