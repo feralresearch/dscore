@@ -82,7 +82,7 @@ struct ReceivedDmxCosStruct
 -(BOOL) FTDI_SendData:(FT_HANDLE)device_handle label:(int)label data:(unsigned char*)data length:(int)length;
 -(int) FTDI_ReceiveData:(FT_HANDLE)device_handle label:(int)label data:(unsigned char*)data expected_length:(unsigned int)expected_length;
 -(DSDMXBox*) FTDI_OpenDevice:(int)device_num;
--(uint8_t) FTDI_RxDMX:(FT_HANDLE)device_handle label:(uint8_t)label data:(unsigned char *)data expected_length:(uint32_t*) expected_length;
+-(uint8_t) FTDI_RxDMX:(FT_HANDLE)device_handle label:(uint8_t)label data:(unsigned char *)data expected_length:(unsigned int) expected_length;
 -(void)shutDown;
 -(void)FTDI_PurgeBuffer:(FT_HANDLE)device_handle;
 @end

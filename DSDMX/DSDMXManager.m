@@ -303,7 +303,7 @@
 
 
 // Read a DMX packet
--(uint8_t) FTDI_RxDMX:(FT_HANDLE)device_handle label:(uint8_t)label data:(unsigned char *)data expected_length:(uint32_t*) expected_length{
+-(uint8_t) FTDI_RxDMX:(FT_HANDLE)device_handle label:(uint8_t)label data:(unsigned char *)data expected_length:(unsigned int) expected_length{
     FT_STATUS res = 0;
     DWORD length = 0;
     DWORD bytes_read =0;
@@ -330,9 +330,9 @@
     if(bytes_read != length) return  NO_RESPONSE;
     // Check The End Code
     if (buffer[length-1] != DMX_END_CODE) return  NO_RESPONSE;
-    *expected_length = (unsigned int)length;
+    expected_length = (unsigned int)length;
     // Copy The Data read to the buffer passed
-    memcpy(data,buffer,*expected_length);
+    memcpy(data,buffer,expected_length);
     return TRUE;
 }
 

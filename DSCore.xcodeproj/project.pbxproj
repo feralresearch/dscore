@@ -442,8 +442,7 @@
 				493A07341C27336E00199A52 /* DSCore.h */,
 				493A07361C27336E00199A52 /* Info.plist */,
 			);
-			name = DSCore;
-			path = DSCommon;
+			path = DSCore;
 			sourceTree = "<group>";
 		};
 		493A07411C2734B200199A52 /* DSClassExtensions */ = {
@@ -1056,7 +1055,7 @@
 				);
 				FRAMEWORK_VERSION = A;
 				HEADER_SEARCH_PATHS = /usr/local/include/;
-				INFOPLIST_FILE = DSCommon/Info.plist;
+				INFOPLIST_FILE = DSCore/Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1065,7 +1064,7 @@
 					"$(PROJECT_DIR)/Libraries/openCV_2.4.11/lib",
 					/usr/local/lib,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = digitalscenographic.com.DSCommon;
+				PRODUCT_BUNDLE_IDENTIFIER = digitalscenographic.com.DSCore;
 				PRODUCT_NAME = DSCore;
 				SKIP_INSTALL = YES;
 			};
@@ -1087,7 +1086,7 @@
 				);
 				FRAMEWORK_VERSION = A;
 				HEADER_SEARCH_PATHS = /usr/local/include/;
-				INFOPLIST_FILE = DSCommon/Info.plist;
+				INFOPLIST_FILE = DSCore/Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1096,7 +1095,7 @@
 					"$(PROJECT_DIR)/Libraries/openCV_2.4.11/lib",
 					/usr/local/lib,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = digitalscenographic.com.DSCommon;
+				PRODUCT_BUNDLE_IDENTIFIER = digitalscenographic.com.DSCore;
 				PRODUCT_NAME = DSCore;
 				SKIP_INSTALL = YES;
 			};

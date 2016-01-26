@@ -89,7 +89,7 @@
             res = [_box.dmxMgr FTDI_RxDMX:_box.device_handle
                                     label:SET_DMX_RX_MODE
                                      data:myDmxIn
-                          expected_length:DMX_DATA_LENGTH];
+                          expected_length:513];
         }
         [_box.dmxMgr FTDI_PurgeBuffer:_box.device_handle];
     
