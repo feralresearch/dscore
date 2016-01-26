@@ -7,7 +7,7 @@
 //
 
 #import "DSDMXBox.h"
-
+#import "DSDMXManager.h"
 @implementation DSDMXBox
 - (id)init {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
@@ -28,7 +28,6 @@
     }
     return self;
 }
-
 
 
 @end

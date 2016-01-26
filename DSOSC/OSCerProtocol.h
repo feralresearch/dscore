@@ -1,6 +1,6 @@
 //
 //  OSCerProtocol.h
-//  DSCommon
+//  DSCore
 //
 //  Created by Andrew on 12/21/15.
 //  Copyright © 2015 Digital Scenographic. All rights reserved.

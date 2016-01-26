@@ -24,7 +24,8 @@
 
         _syphonSource=[syphonMgr.syphonSourcesByDesc valueForKey:_requestedSyphonServer];
 
-
+        [self setWarning:!_syphonSource];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(receiveNotification:)
                                                      name:@"SyphonSourceChange"
@@ -38,30 +39,25 @@
 -(void) receiveNotification:(NSNotification *) notification{
     if ([[notification name] isEqualToString:@"SyphonSourceChange"]){
         _syphonSource=[syphonMgr.syphonSourcesByDesc valueForKey:_requestedSyphonServer];
+
+        
+
+        if(!_syphonSource){
+            [self setWarning:YES];
+            NSLog(@"WARNING: Requested syphon source '%@' is not available, these are:",_requestedSyphonServer);
+            for(NSString* syphonSourceName in syphonMgr.syphonSourcesByDesc){
+                NSLog(@"--- %@",syphonSourceName);
+            }
+        }
     }
 }
 
 -(GLuint) glTextureForContext:(NSOpenGLContext*)context{
     if(_syphonSource.syphonClient.hasNewFrame){
+         [self setWarning:NO];
         _syphonSource.lastFrame=[NSDate date];
         _syphonSource.syphonImage = [_syphonSource.syphonClient newFrameImageForContext:[context CGLContextObj]];
         tex=_syphonSource.syphonImage.textureName;
-        
-       /* if(!frameCapture){
-
-            frameCapture = [NSImage imageWithGLTexture:_syphonSource.syphonImage.textureName
-                                           textureType:GL_TEXTURE_RECTANGLE_ARB
-                                           textureSize:_syphonSource.syphonImage.textureSize
-                                               context:context
-                                               flipped:NO];
-        }*/
-        
-        
-     
-
-        
-        
-        
     }
     return tex;
 }

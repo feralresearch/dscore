@@ -447,7 +447,7 @@
 }
 
 
-/*
+
  
  http://www.bobbygeorgescu.com/2011/08/finding-average-color-of-uiimage/
  

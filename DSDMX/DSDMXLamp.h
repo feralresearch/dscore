@@ -19,8 +19,10 @@
 @property int blue;
 @property int white;
 
+@property BOOL autoWhite;
+
 -(id)initChannel:(int)address onBox:(DSDMXBox*)box;
--(void)setNSColor:(NSColor*)color;
+-(void)setColor:(NSColor*)color;
 -(void)setR:(int)red G:(int)green B:(int)blue W:(int)white;
 -(void)off;
 

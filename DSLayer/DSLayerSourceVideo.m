@@ -7,8 +7,8 @@
 //
 
 #import "DSLayerSourceVideo.h"
-#import <AVFoundation/AVFoundation.h>
-#import <DSCommon/NSImage+util.h>
+
+#import <DSCore/NSImage+util.h>
 @implementation DSLayerSourceVideo
 
 - (id)initWithPath:(NSString*)path{
@@ -29,19 +29,19 @@
             NSString* urlTextEscaped = [urlAsString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
             NSURL *url = [NSURL URLWithString: urlTextEscaped];
             
-            // Create Video player
+            // Create Video _player
             NSDictionary* settings = @{ (id)kCVPixelBufferPixelFormatTypeKey : [NSNumber numberWithInt:kCVPixelFormatType_32BGRA] };
-            player = [[AVPlayer alloc] init];
-            player.actionAtItemEnd=AVPlayerActionAtItemEndNone;
+            _player = [[AVPlayer alloc] init];
+            _player.actionAtItemEnd=AVPlayerActionAtItemEndNone;
             playerOutput = [[AVPlayerItemVideoOutput alloc] initWithPixelBufferAttributes:settings];
             playerItem = [AVPlayerItem playerItemWithURL:url];
             
             
             // Register for end of video notification
             [[NSNotificationCenter defaultCenter] addObserver:self
-                                                     selector:@selector(playerItemDidReachEnd:)
+                                                     selector:@selector(_playerItemDidReachEnd:)
                                                          name:AVPlayerItemDidPlayToEndTimeNotification
-                                                       object:[player currentItem]];
+                                                       object:[_player currentItem]];
             
             // Problem loading video
             if(!playerItem){
@@ -51,23 +51,23 @@
             // Video is fine, set up some stuff
             }else{
                 [playerItem addOutput:playerOutput];
-                if(playerItem){[player replaceCurrentItemWithPlayerItem:playerItem];}
-                // Start video and unpause
+                if(playerItem){[_player replaceCurrentItemWithPlayerItem:playerItem];}
+                // Start video and unpausef
                 // FIXME: Should be moved to layer so we only play videos as needed
-                [[player currentItem] seekToTime:kCMTimeZero];
-                [player setRate:([player rate] == 0.0f ? 1.0f : 0.0f)];
+                [[_player currentItem] seekToTime:kCMTimeZero];
+                [_player setRate:([_player rate] == 0.0f ? 1.0f : 0.0f)];
                 
-                [player setVolume:0];
+                [_player setVolume:0];
                 
                 // Make a screengrab
                 asset = [AVAsset assetWithURL:url];
-                AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
+                imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
                 CMTime time = CMTimeMake(1, 1);
                 CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
                 [self setStillFrame:[[NSImage alloc] initWithCGImage:imageRef size:NSMakeSize(640, 480)]];
                 CGImageRelease(imageRef);
                 [self setWarning:NO];
-                [player play];
+                [_player play];
             }
             
             
@@ -83,15 +83,21 @@
     return self;
 }
 
-- (void)playerItemDidReachEnd:(NSNotification *)notification {
+- (void)_playerItemDidReachEnd:(NSNotification *)notification {
     if(_loop){
         AVPlayerItem *p = [notification object];
         [p seekToTime:kCMTimeZero];
     }
 }
 
+-(CGImageRef)frameGrabAt:(CMTime)time{
+    return [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
+}
 -(GLuint) glTextureForContext:(NSOpenGLContext*)context
                        atTime:(const CVTimeStamp *)cvOutputTime{
+    
+    
+    
     if(playerItem && !textureDefined){
         
         CGLLockContext([context CGLContextObj]);
@@ -119,14 +125,14 @@
     // For videos in particular, we update the gltextures on the *source*
     // This doesn't happen every call, and we might have >1 layer with the same video on it
     
-    CMTime playerTime = [playerOutput itemTimeForCVTimeStamp:*cvOutputTime];
+    CMTime _playerTime = [playerOutput itemTimeForCVTimeStamp:*cvOutputTime];
     
-    //NSLog(@"%f",CMTimeGetSeconds(playerTime));
-    //[thisLayer.layerSource.videoPlayer setRate:1.0];
+    //NSLog(@"%f",CMTimeGetSeconds(_playerTime));
+    //[thisLayer.layerSource.video_player setRate:1.0];
     
-    if ([playerOutput hasNewPixelBufferForItemTime:playerTime]){
+    if ([playerOutput hasNewPixelBufferForItemTime:_playerTime]){
         
-        frameBuffer= [playerOutput copyPixelBufferForItemTime:playerTime itemTimeForDisplay:NULL];
+        frameBuffer= [playerOutput copyPixelBufferForItemTime:_playerTime itemTimeForDisplay:NULL];
         CVReturn result= CVOpenGLTextureCacheCreateTextureFromImage(NULL,
                                                                     textureCache,
                                                                     frameBuffer,
@@ -153,7 +159,7 @@
 -(GLuint) glTextureTarget{return GL_TEXTURE_2D;}
 -(NSSize) glTextureSize{return glTextureSize;}
 -(NSSize) size{return glTextureSize;}
-
+/*
 -(NSImage*)frameAsNSImage{
     return [NSImage imageWithGLTexture:glTexture
                                             textureType:GL_TEXTURE_2D//glTextureTarget
@@ -161,7 +167,12 @@
                                                 context:_glContext
                                                 flipped:NO];
 }
+*/
 
-
+- (void)dealloc{
+    [_player seekToTime:CMTimeMake(0, 1)];
+    [_player pause];
+    [self setPlayer:nil];
+}
 
 @end

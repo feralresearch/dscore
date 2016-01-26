@@ -23,6 +23,7 @@
         _transformation = [[DSLayerTransformation alloc] init];
         _alpha=1.0;
         _source = [[DSLayerSourceSyphon alloc] initWithServerDesc:syphonName];
+        _name = @"UNTITLED";
     }
     return self;
 }
@@ -97,5 +98,31 @@
     }
 }
 
+-(NSMutableArray*)filterArray{
+    if(!filterArray){
+        filterArray=[[NSMutableArray alloc] init];
+    }
+    return filterArray;
+}
+-(void)setFilterArray:(NSMutableArray *)newFilterArray{
+    [self willChangeValueForKey:@"filterArray"];
+    filterArray=newFilterArray;
+    [_caLayer setFilters:filterArray];
+    [self didChangeValueForKey:@"filterArray"];
+}
+-(void)removeAllFilters{
+    [self setFilterArray:[[NSMutableArray alloc] init]];
+}
+
+-(void)addFilter:(CIFilter*)filter{
+    NSMutableArray* newFilterArray = self.filterArray;
+    [filterArray addObject:filter];
+    [self setFilterArray:newFilterArray];
+}
+-(void)removeFilter:(CIFilter*)filter{
+    NSMutableArray* newFilterArray = self.filterArray;
+    [filterArray removeObject:filter];
+    [self setFilterArray:newFilterArray];
+}
 
 @end

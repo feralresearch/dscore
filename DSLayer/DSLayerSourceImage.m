@@ -14,6 +14,7 @@
 - (id)initWithPath:(NSString*)path{
     if (self = [super init]){
         _image = [[NSImage alloc] initWithContentsOfFile:path];
+        _path=path;
         textureDefined=NO;
     }
     return self;

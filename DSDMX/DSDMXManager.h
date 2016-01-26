@@ -64,7 +64,14 @@ struct ReceivedDmxCosStruct
 
 @interface DSDMXManager : NSObject{
     DMXUSBPROParamsType PRO_Params;
+    NSString* _statusMessage;
 }
+
+-(BOOL) error;
+-(void)resetErrorMsg;
+
+@property NSString* statusMessage;
+@property (readonly) NSImage* statusLight;
 
 @property (readonly) NSMutableArray *availableDevices;
 @property (readonly) NSString* d2XXDriverVersion;

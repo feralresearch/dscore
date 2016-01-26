@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4905DFDC1C277653001A60E1 /* DSLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4905DFDA1C277653001A60E1 /* DSLayer.m */; settings = {ASSET_TAGS = (); }; };
 		4915D3CA1C33140A00BD7E27 /* ftd2xx.h in Headers */ = {isa = PBXBuildFile; fileRef = 4915D3C91C33140A00BD7E27 /* ftd2xx.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4915D3DF1C342B5500BD7E27 /* DSLayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4915D3DD1C342B5500BD7E27 /* DSLayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4915D3E01C342B5500BD7E27 /* DSLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4915D3DE1C342B5500BD7E27 /* DSLayerView.m */; settings = {ASSET_TAGS = (); }; };
 		493A07471C2734B200199A52 /* NSImage+util.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A07431C2734B200199A52 /* NSImage+util.m */; settings = {ASSET_TAGS = (); }; };
 		493A07521C2734BC00199A52 /* DSDMXBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A074C1C2734BC00199A52 /* DSDMXBox.m */; settings = {ASSET_TAGS = (); }; };
 		493A07541C2734BC00199A52 /* DSDMXLamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A074E1C2734BC00199A52 /* DSDMXLamp.m */; settings = {ASSET_TAGS = (); }; };
@@ -18,17 +20,17 @@
 		493A076B1C2734C000199A52 /* DSLayerSourceSyphon.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A075F1C2734C000199A52 /* DSLayerSourceSyphon.m */; settings = {ASSET_TAGS = (); }; };
 		493A076D1C2734C000199A52 /* DSLayerSourceVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A07611C2734C000199A52 /* DSLayerSourceVideo.m */; settings = {ASSET_TAGS = (); }; };
 		493A076F1C2734C000199A52 /* DSLayerTransformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A07631C2734C000199A52 /* DSLayerTransformation.m */; settings = {ASSET_TAGS = (); }; };
-		493A07741C2734C800199A52 /* DSLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A07721C2734C800199A52 /* DSLayerView.m */; settings = {ASSET_TAGS = (); }; };
+		493A07741C2734C800199A52 /* DSLayerViewGL.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A07721C2734C800199A52 /* DSLayerViewGL.m */; settings = {ASSET_TAGS = (); }; };
 		493A077B1C2734CD00199A52 /* DSOSCMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A07771C2734CD00199A52 /* DSOSCMgr.m */; settings = {ASSET_TAGS = (); }; };
 		493A077D1C2734CD00199A52 /* OSCer.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A07791C2734CD00199A52 /* OSCer.m */; settings = {ASSET_TAGS = (); }; };
 		493A07841C2734D400199A52 /* DSSyphonMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A07801C2734D400199A52 /* DSSyphonMgr.m */; settings = {ASSET_TAGS = (); }; };
 		493A07861C2734D400199A52 /* DSSyphonSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A07821C2734D400199A52 /* DSSyphonSource.m */; settings = {ASSET_TAGS = (); }; };
 		4952FC351C27947700D7003B /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4952FC341C27945A00D7003B /* Syphon.framework */; };
-		496572D51C27798A0027A429 /* DSCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 493A07341C27336E00199A52 /* DSCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		496572D51C27798A0027A429 /* DSCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 493A07341C27336E00199A52 /* DSCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		496572D61C2779BC0027A429 /* DSSyphonMgr.h in Headers */ = {isa = PBXBuildFile; fileRef = 493A077F1C2734D400199A52 /* DSSyphonMgr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		496572D71C2779BC0027A429 /* DSSyphonSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 493A07811C2734D400199A52 /* DSSyphonSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		496572D81C2779BC0027A429 /* DSOSCMgr.h in Headers */ = {isa = PBXBuildFile; fileRef = 493A07761C2734CD00199A52 /* DSOSCMgr.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		496572D91C2779BC0027A429 /* DSLayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 493A07711C2734C800199A52 /* DSLayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		496572D91C2779BC0027A429 /* DSLayerViewGL.h in Headers */ = {isa = PBXBuildFile; fileRef = 493A07711C2734C800199A52 /* DSLayerViewGL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		496572DA1C2779BC0027A429 /* DSLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4905DFD91C277653001A60E1 /* DSLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		496572DB1C2779BC0027A429 /* DSLayerSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 493A075A1C2734C000199A52 /* DSLayerSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		496572DC1C2779BC0027A429 /* DSLayerSourceImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 493A075C1C2734C000199A52 /* DSLayerSourceImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -66,6 +68,10 @@
 		49B3A4511C273BAF00EB54D4 /* VVBasics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B3A3E71C2736AC00EB54D4 /* VVBasics.framework */; };
 		49B3A4521C273BB100EB54D4 /* VVOSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B3A3F31C2736AC00EB54D4 /* VVOSC.framework */; };
 		49B3A4541C273BF900EB54D4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B3A4531C273BF900EB54D4 /* libz.dylib */; settings = {ASSET_TAGS = (); }; };
+		49C41C021C3485600024154B /* DSSyphonDisplayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C41C001C3485600024154B /* DSSyphonDisplayLayer.m */; settings = {ASSET_TAGS = (); }; };
+		49C41C051C34A7FA0024154B /* NSView+util.h in Headers */ = {isa = PBXBuildFile; fileRef = 49C41C031C34A7FA0024154B /* NSView+util.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49C41C061C34A7FA0024154B /* NSView+util.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C41C041C34A7FA0024154B /* NSView+util.m */; settings = {ASSET_TAGS = (); }; };
+		49C41C0E1C34C21B0024154B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C41C0D1C34C21B0024154B /* AVFoundation.framework */; };
 		49E230B81C278A2F0055EF53 /* OSCerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E230B71C278A160055EF53 /* OSCerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -292,8 +298,10 @@
 		4905DFD91C277653001A60E1 /* DSLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLayer.h; sourceTree = "<group>"; };
 		4905DFDA1C277653001A60E1 /* DSLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLayer.m; sourceTree = "<group>"; };
 		4915D3C91C33140A00BD7E27 /* ftd2xx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftd2xx.h; path = Frameworks/ftd2xx.h; sourceTree = "<group>"; };
-		493A07311C27336E00199A52 /* DSCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DSCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		493A07341C27336E00199A52 /* DSCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSCommon.h; sourceTree = "<group>"; };
+		4915D3DD1C342B5500BD7E27 /* DSLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLayerView.h; sourceTree = "<group>"; };
+		4915D3DE1C342B5500BD7E27 /* DSLayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLayerView.m; sourceTree = "<group>"; };
+		493A07311C27336E00199A52 /* DSCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DSCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		493A07341C27336E00199A52 /* DSCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSCore.h; sourceTree = "<group>"; };
 		493A07361C27336E00199A52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		493A07421C2734B200199A52 /* NSImage+util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+util.h"; sourceTree = "<group>"; };
 		493A07431C2734B200199A52 /* NSImage+util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+util.m"; sourceTree = "<group>"; };
@@ -313,8 +321,8 @@
 		493A07611C2734C000199A52 /* DSLayerSourceVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLayerSourceVideo.m; sourceTree = "<group>"; };
 		493A07621C2734C000199A52 /* DSLayerTransformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLayerTransformation.h; sourceTree = "<group>"; };
 		493A07631C2734C000199A52 /* DSLayerTransformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLayerTransformation.m; sourceTree = "<group>"; };
-		493A07711C2734C800199A52 /* DSLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLayerView.h; sourceTree = "<group>"; };
-		493A07721C2734C800199A52 /* DSLayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLayerView.m; sourceTree = "<group>"; };
+		493A07711C2734C800199A52 /* DSLayerViewGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLayerViewGL.h; sourceTree = "<group>"; };
+		493A07721C2734C800199A52 /* DSLayerViewGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLayerViewGL.m; sourceTree = "<group>"; };
 		493A07761C2734CD00199A52 /* DSOSCMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOSCMgr.h; sourceTree = "<group>"; };
 		493A07771C2734CD00199A52 /* DSOSCMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOSCMgr.m; sourceTree = "<group>"; };
 		493A07781C2734CD00199A52 /* OSCer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCer.h; sourceTree = "<group>"; };
@@ -350,6 +358,13 @@
 		49B3A4371C2737AC00EB54D4 /* libopencv_videostab.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_videostab.a; path = Libraries/openCV_2.4.11/lib/libopencv_videostab.a; sourceTree = "<group>"; };
 		49B3A44F1C273B2E00EB54D4 /* libftd2xx.1.2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libftd2xx.1.2.2.dylib; path = ../../../../../../../usr/local/lib/libftd2xx.1.2.2.dylib; sourceTree = "<group>"; };
 		49B3A4531C273BF900EB54D4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = ../../../../../../../usr/lib/libz.dylib; sourceTree = "<group>"; };
+		49C41BFF1C3485600024154B /* DSSyphonDisplayLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSyphonDisplayLayer.h; sourceTree = "<group>"; };
+		49C41C001C3485600024154B /* DSSyphonDisplayLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSSyphonDisplayLayer.m; sourceTree = "<group>"; };
+		49C41C031C34A7FA0024154B /* NSView+util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+util.h"; sourceTree = "<group>"; };
+		49C41C041C34A7FA0024154B /* NSView+util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+util.m"; sourceTree = "<group>"; };
+		49C41C091C34C17F0024154B /* CoreMediaIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMediaIO.framework; path = System/Library/Frameworks/CoreMediaIO.framework; sourceTree = SDKROOT; };
+		49C41C0B1C34C18C0024154B /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		49C41C0D1C34C21B0024154B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		49E230B71C278A160055EF53 /* OSCerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSCerProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -358,6 +373,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C41C0E1C34C21B0024154B /* AVFoundation.framework in Frameworks */,
 				4952FC351C27947700D7003B /* Syphon.framework in Frameworks */,
 				49B3A4511C273BAF00EB54D4 /* VVBasics.framework in Frameworks */,
 				49B3A4521C273BB100EB54D4 /* VVOSC.framework in Frameworks */,
@@ -395,9 +411,12 @@
 		493A07271C27336E00199A52 = {
 			isa = PBXGroup;
 			children = (
+				49C41C0D1C34C21B0024154B /* AVFoundation.framework */,
+				49C41C0B1C34C18C0024154B /* CoreMedia.framework */,
+				49C41C091C34C17F0024154B /* CoreMediaIO.framework */,
 				4952FC2E1C27945A00D7003B /* Syphon.xcodeproj */,
 				49B3A3C61C2736AB00EB54D4 /* VVOpenSource.xcodeproj */,
-				493A07331C27336E00199A52 /* DSCommon */,
+				493A07331C27336E00199A52 /* DSCore */,
 				49B3A41C1C27378700EB54D4 /* Frameworks/Libs */,
 				493A077E1C2734D400199A52 /* DSSyphon */,
 				493A07751C2734CD00199A52 /* DSOSC */,
@@ -412,17 +431,18 @@
 		493A07321C27336E00199A52 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				493A07311C27336E00199A52 /* DSCommon.framework */,
+				493A07311C27336E00199A52 /* DSCore.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		493A07331C27336E00199A52 /* DSCommon */ = {
+		493A07331C27336E00199A52 /* DSCore */ = {
 			isa = PBXGroup;
 			children = (
-				493A07341C27336E00199A52 /* DSCommon.h */,
+				493A07341C27336E00199A52 /* DSCore.h */,
 				493A07361C27336E00199A52 /* Info.plist */,
 			);
+			name = DSCore;
 			path = DSCommon;
 			sourceTree = "<group>";
 		};
@@ -431,6 +451,8 @@
 			children = (
 				493A07421C2734B200199A52 /* NSImage+util.h */,
 				493A07431C2734B200199A52 /* NSImage+util.m */,
+				49C41C031C34A7FA0024154B /* NSView+util.h */,
+				49C41C041C34A7FA0024154B /* NSView+util.m */,
 			);
 			path = DSClassExtensions;
 			sourceTree = "<group>";
@@ -470,8 +492,10 @@
 		493A07701C2734C800199A52 /* DSLayerView */ = {
 			isa = PBXGroup;
 			children = (
-				493A07711C2734C800199A52 /* DSLayerView.h */,
-				493A07721C2734C800199A52 /* DSLayerView.m */,
+				493A07711C2734C800199A52 /* DSLayerViewGL.h */,
+				493A07721C2734C800199A52 /* DSLayerViewGL.m */,
+				4915D3DD1C342B5500BD7E27 /* DSLayerView.h */,
+				4915D3DE1C342B5500BD7E27 /* DSLayerView.m */,
 			);
 			path = DSLayerView;
 			sourceTree = "<group>";
@@ -495,6 +519,8 @@
 				493A07801C2734D400199A52 /* DSSyphonMgr.m */,
 				493A07811C2734D400199A52 /* DSSyphonSource.h */,
 				493A07821C2734D400199A52 /* DSSyphonSource.m */,
+				49C41BFF1C3485600024154B /* DSSyphonDisplayLayer.h */,
+				49C41C001C3485600024154B /* DSSyphonDisplayLayer.m */,
 			);
 			path = DSSyphon;
 			sourceTree = "<group>";
@@ -581,13 +607,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4915D3CA1C33140A00BD7E27 /* ftd2xx.h in Headers */,
-				496572D51C27798A0027A429 /* DSCommon.h in Headers */,
+				496572D51C27798A0027A429 /* DSCore.h in Headers */,
 				49E230B81C278A2F0055EF53 /* OSCerProtocol.h in Headers */,
 				496572D61C2779BC0027A429 /* DSSyphonMgr.h in Headers */,
 				496572D71C2779BC0027A429 /* DSSyphonSource.h in Headers */,
 				496572D81C2779BC0027A429 /* DSOSCMgr.h in Headers */,
-				496572D91C2779BC0027A429 /* DSLayerView.h in Headers */,
+				496572D91C2779BC0027A429 /* DSLayerViewGL.h in Headers */,
 				496572DA1C2779BC0027A429 /* DSLayer.h in Headers */,
+				4915D3DF1C342B5500BD7E27 /* DSLayerView.h in Headers */,
 				496572DB1C2779BC0027A429 /* DSLayerSource.h in Headers */,
 				496572DC1C2779BC0027A429 /* DSLayerSourceImage.h in Headers */,
 				496572DD1C2779BC0027A429 /* DSLayerSourceSyphon.h in Headers */,
@@ -596,6 +623,7 @@
 				496572E01C2779BC0027A429 /* DSDMXBox.h in Headers */,
 				496572E11C2779BC0027A429 /* DSDMXLamp.h in Headers */,
 				496572E21C2779BC0027A429 /* DSDMXManager.h in Headers */,
+				49C41C051C34A7FA0024154B /* NSView+util.h in Headers */,
 				496572E31C2779BC0027A429 /* NSImage+util.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,9 +631,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		493A07301C27336E00199A52 /* DSCommon */ = {
+		493A07301C27336E00199A52 /* DSCore */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 493A07391C27336E00199A52 /* Build configuration list for PBXNativeTarget "DSCommon" */;
+			buildConfigurationList = 493A07391C27336E00199A52 /* Build configuration list for PBXNativeTarget "DSCore" */;
 			buildPhases = (
 				493A072C1C27336E00199A52 /* Sources */,
 				493A072D1C27336E00199A52 /* Frameworks */,
@@ -620,9 +648,9 @@
 				4952FC371C27947F00D7003B /* PBXTargetDependency */,
 				49B3A41B1C2736B100EB54D4 /* PBXTargetDependency */,
 			);
-			name = DSCommon;
+			name = DSCore;
 			productName = DSCommon;
-			productReference = 493A07311C27336E00199A52 /* DSCommon.framework */;
+			productReference = 493A07311C27336E00199A52 /* DSCore.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -639,7 +667,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 493A072B1C27336E00199A52 /* Build configuration list for PBXProject "DSCommon" */;
+			buildConfigurationList = 493A072B1C27336E00199A52 /* Build configuration list for PBXProject "DSCore" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -662,7 +690,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				493A07301C27336E00199A52 /* DSCommon */,
+				493A07301C27336E00199A52 /* DSCore */,
 			);
 		};
 /* End PBXProject section */
@@ -894,9 +922,12 @@
 				493A077B1C2734CD00199A52 /* DSOSCMgr.m in Sources */,
 				493A07541C2734BC00199A52 /* DSDMXLamp.m in Sources */,
 				493A07861C2734D400199A52 /* DSSyphonSource.m in Sources */,
-				493A07741C2734C800199A52 /* DSLayerView.m in Sources */,
+				493A07741C2734C800199A52 /* DSLayerViewGL.m in Sources */,
 				493A076D1C2734C000199A52 /* DSLayerSourceVideo.m in Sources */,
+				49C41C021C3485600024154B /* DSSyphonDisplayLayer.m in Sources */,
 				493A07671C2734C000199A52 /* DSLayerSource.m in Sources */,
+				4915D3E01C342B5500BD7E27 /* DSLayerView.m in Sources */,
+				49C41C061C34A7FA0024154B /* NSView+util.m in Sources */,
 				4905DFDC1C277653001A60E1 /* DSLayer.m in Sources */,
 				493A07521C2734BC00199A52 /* DSDMXBox.m in Sources */,
 				493A076F1C2734C000199A52 /* DSLayerTransformation.m in Sources */,
@@ -1035,7 +1066,7 @@
 					/usr/local/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = digitalscenographic.com.DSCommon;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DSCore;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1066,7 +1097,7 @@
 					/usr/local/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = digitalscenographic.com.DSCommon;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DSCore;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1074,7 +1105,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		493A072B1C27336E00199A52 /* Build configuration list for PBXProject "DSCommon" */ = {
+		493A072B1C27336E00199A52 /* Build configuration list for PBXProject "DSCore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				493A07371C27336E00199A52 /* Debug */,
@@ -1083,7 +1114,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		493A07391C27336E00199A52 /* Build configuration list for PBXNativeTarget "DSCommon" */ = {
+		493A07391C27336E00199A52 /* Build configuration list for PBXNativeTarget "DSCore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				493A073A1C27336E00199A52 /* Debug */,

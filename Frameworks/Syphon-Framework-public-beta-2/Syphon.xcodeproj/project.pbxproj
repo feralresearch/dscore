@@ -29,6 +29,7 @@
 		1B0906C911CBB1CE00BCBE41 /* Syphon.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B0906C811CBB1CE00BCBE41 /* Syphon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B09098711CD9A1C00BCBE41 /* SyphonClientConnectionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B09098511CD9A1C00BCBE41 /* SyphonClientConnectionManager.h */; settings = {ATTRIBUTES = (); }; };
 		1B09098811CD9A1C00BCBE41 /* SyphonClientConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B09098611CD9A1C00BCBE41 /* SyphonClientConnectionManager.m */; };
+		49C41C081C34C12F0024154B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C41C071C34C12F0024154B /* CoreMedia.framework */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 		BD038877122EAB1A007725FF /* SyphonIOSurfaceImage.h in Headers */ = {isa = PBXBuildFile; fileRef = BD038875122EAB1A007725FF /* SyphonIOSurfaceImage.h */; };
@@ -80,6 +81,7 @@
 		1B09098511CD9A1C00BCBE41 /* SyphonClientConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyphonClientConnectionManager.h; sourceTree = "<group>"; };
 		1B09098611CD9A1C00BCBE41 /* SyphonClientConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyphonClientConnectionManager.m; sourceTree = "<group>"; };
 		32DBCF5E0370ADEE00C91783 /* Syphon_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Syphon_Prefix.pch; sourceTree = "<group>"; };
+		49C41C071C34C12F0024154B /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* Syphon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Syphon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD038870122EA9FF007725FF /* SyphonImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyphonImage.h; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C41C081C34C12F0024154B /* CoreMedia.framework in Frameworks */,
 				8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */,
 				1B09069B11CB2FBD00BCBE41 /* IOSurface.framework in Frameworks */,
 				1B09069D11CB2FBD00BCBE41 /* OpenGL.framework in Frameworks */,
@@ -149,6 +152,7 @@
 		0867D691FE84028FC02AAC07 /* OpenVideoTap */ = {
 			isa = PBXGroup;
 			children = (
+				49C41C071C34C12F0024154B /* CoreMedia.framework */,
 				BD8BFECA122C1A2A0015B2BE /* Building Syphon.rtf */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
@@ -617,6 +621,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
@@ -647,6 +652,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
 			};
@@ -682,6 +688,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";

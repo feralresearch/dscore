@@ -30,6 +30,7 @@
 }
 - (id)init{
     if (self = [super init]){
+        [self resetErrorMsg];
         [self scanForDevices];
     }
     return self;
@@ -43,7 +44,9 @@
     
     // Number of Found Devices
     if (devCount == 0){
-        NSLog(@"WARNING: No ENTTEC devices found");
+        NSString* warningMsg=@"WARNING: No ENTTEC devices found";
+        [self setStatusMessage:warningMsg];
+        NSLog(@"%@",warningMsg);
     }
     
     for (int device_num=0;device_num<devCount;device_num++){
@@ -51,7 +54,7 @@
         if(newBox){
             [_availableDevices addObject:newBox];
         }else{
-            NSLog(@"ERROR: %i devices found, cannot connect to ID:%i ",devCount,device_num);
+            [self setStatusMessage:[NSString stringWithFormat:@"ERROR: %i devices found, cannot connect to ID:%i ",devCount,device_num]];
         }
     }
     
@@ -351,8 +354,42 @@
             FT_ClrRts(ftHandle);
             FT_CyclePort(ftHandle);
             FT_Close(ftHandle);
-            NSLog(@"Closing...");
+            NSLog(@"DMX Shutdown...");
         }
     }
 }
+
+
+-(BOOL) error{
+    return ([_statusMessage length] != 0)?YES:NO;
+}
+-(NSImage*) statusLight{
+    if([_statusMessage length] != 0){
+        return [NSImage imageNamed:NSImageNameStatusUnavailable];
+    }else  if([_statusMessage length] != 0){
+        return [NSImage imageNamed:NSImageNameStatusPartiallyAvailable];
+    }else{
+        return [NSImage imageNamed:NSImageNameStatusAvailable];
+    }
+}
+-(void)resetErrorMsg{
+    [self willChangeValueForKey:@"statusLight"];
+    [self willChangeValueForKey:@"statusMessage"];
+        _statusMessage=@"";
+    [self didChangeValueForKey:@"statuseMessage"];
+    [self didChangeValueForKey:@"statusLight"];
+}
+-(void)setStatusMessage:(NSString *)message{
+    [self willChangeValueForKey:@"statusLight"];
+        _statusMessage=message;
+        NSLog(@"%@",message);
+    [self didChangeValueForKey:@"statusLight"];
+}
+-(NSString*)statusMessage{
+    return _statusMessage;
+}
+
+
+
+
 @end
