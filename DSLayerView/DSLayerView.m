@@ -131,69 +131,71 @@
     [self setShiftY:0];
     [self setScaleZ:1];
     for (DSLayer* layer in _layers){
-        
-        // Syphon
-        if([layer.source isKindOfClass:[DSLayerSourceSyphon class]]){
-            
-            layer.caLayer=[[DSSyphonDisplayLayer alloc] initWithSource:(DSLayerSourceSyphon*)layer.source];
-            [[layer caLayer] setFrame:NSMakeRect(0, 0, self.frame.size.width,self.frame.size.height)];
-            [layer.caLayer setOpacity:layer.alpha];
-            layer.caLayer.layoutManager  = [CAConstraintLayoutManager layoutManager];
-            layer.caLayer.autoresizingMask = kCALayerHeightSizable | kCALayerWidthSizable;
-            layer.caLayer.contentsGravity = kCAGravityResize;
-            [baseLayer addSublayer:layer.caLayer];
- 
-            
-        // Image
-        } else if([layer.source isKindOfClass:[DSLayerSourceImage class]]){
-            
-            DSLayerSourceImage* imgSourcedLayer = (DSLayerSourceImage*)layer.source;
-            layer.caLayer=[[CALayer alloc] init];
-            [[layer caLayer] setFrame:NSMakeRect(0, 0, self.frame.size.width,self.frame.size.height)];
-            [layer.caLayer setContents:imgSourcedLayer.image];
-            [layer.caLayer setOpacity:layer.alpha];
+        if(layer.source){
+            // Syphon
+            if([layer.source isKindOfClass:[DSLayerSourceSyphon class]]){
+                
+                layer.caLayer=[[DSSyphonDisplayLayer alloc] initWithSource:(DSLayerSourceSyphon*)layer.source];
+                [[layer caLayer] setFrame:NSMakeRect(0, 0, self.frame.size.width,self.frame.size.height)];
+                [layer.caLayer setOpacity:layer.alpha];
+                layer.caLayer.layoutManager  = [CAConstraintLayoutManager layoutManager];
+                layer.caLayer.autoresizingMask = kCALayerHeightSizable | kCALayerWidthSizable;
+                layer.caLayer.contentsGravity = kCAGravityResize;
+                [baseLayer addSublayer:layer.caLayer];
+     
+                
+            // Image
+            } else if([layer.source isKindOfClass:[DSLayerSourceImage class]]){
+                
+                DSLayerSourceImage* imgSourcedLayer = (DSLayerSourceImage*)layer.source;
+                layer.caLayer=[[CALayer alloc] init];
+                [[layer caLayer] setFrame:NSMakeRect(0, 0, self.frame.size.width,self.frame.size.height)];
+                [layer.caLayer setContents:imgSourcedLayer.image];
+                [layer.caLayer setOpacity:layer.alpha];
 
-            layer.caLayer.layoutManager  = [CAConstraintLayoutManager layoutManager];
-            layer.caLayer.autoresizingMask = kCALayerHeightSizable | kCALayerWidthSizable;
-            layer.caLayer.contentsGravity = kCAGravityResize;
-            
-            [baseLayer addSublayer:layer.caLayer];
-            
-            
-        // Video
-        } else if([layer.source isKindOfClass:[DSLayerSourceVideo class]]){
-            DSLayerSourceVideo* videoSourcedLayer = (DSLayerSourceVideo*)layer.source;
-            layer.caLayer=[[AVPlayerLayer alloc] init];
-            [[layer caLayer] setFrame:NSMakeRect(0, 0, self.frame.size.width,self.frame.size.height)];
-            [(AVPlayerLayer*)layer.caLayer setPlayer:videoSourcedLayer.player];
-            [layer.caLayer setOpacity:layer.alpha];
-            
-            layer.caLayer.layoutManager  = [CAConstraintLayoutManager layoutManager];
-            layer.caLayer.autoresizingMask = kCALayerHeightSizable | kCALayerWidthSizable;
-            layer.caLayer.contentsGravity = kCAGravityResize;
+                layer.caLayer.layoutManager  = [CAConstraintLayoutManager layoutManager];
+                layer.caLayer.autoresizingMask = kCALayerHeightSizable | kCALayerWidthSizable;
+                layer.caLayer.contentsGravity = kCAGravityResize;
+                
+                [baseLayer addSublayer:layer.caLayer];
+                
+                
+            // Video
+            } else if([layer.source isKindOfClass:[DSLayerSourceVideo class]]){
+                DSLayerSourceVideo* videoSourcedLayer = (DSLayerSourceVideo*)layer.source;
+                layer.caLayer=[[AVPlayerLayer alloc] init];
+                [[layer caLayer] setFrame:NSMakeRect(0, 0, self.frame.size.width,self.frame.size.height)];
+                [(AVPlayerLayer*)layer.caLayer setPlayer:videoSourcedLayer.player];
+                [layer.caLayer setOpacity:layer.alpha];
+                
+                layer.caLayer.layoutManager  = [CAConstraintLayoutManager layoutManager];
+                layer.caLayer.autoresizingMask = kCALayerHeightSizable | kCALayerWidthSizable;
+                layer.caLayer.contentsGravity = kCAGravityResize;
 
-            [baseLayer addSublayer:layer.caLayer];
-
-
-        // Camera
-        } else if([layer.source isKindOfClass:[DSLayerSourceCamera class]]){
-            DSLayerSourceCamera* camSourcedLayer = (DSLayerSourceCamera*)layer.source;
-           
-            [camSourcedLayer.previewLayer setFrame:NSMakeRect(0, 0, self.frame.size.width,self.frame.size.height)];
-            [camSourcedLayer.previewLayer setOpacity:layer.alpha];
-            //camSourcedLayer.previewLayer.position = CGPointMake(CGRectGetMidX(layer.caLayer.bounds), CGRectGetMidY(camSourcedLayer.previewLayer.bounds));
-            //((AVSampleBufferDisplayLayer*)layer.caLayer).videoGravity = AVLayerVideoGravityResizeAspect;
-            //camSourcedLayer.previewLayer.backgroundColor = CGColorGetConstantColor(kCGColorBlack);
-            //camSourcedLayer.previewLayer.layoutManager  = [CAConstraintLayoutManager layoutManager];
-            camSourcedLayer.previewLayer.autoresizingMask = kCALayerHeightSizable | kCALayerWidthSizable;
-            camSourcedLayer.previewLayer.contentsGravity = kCAGravityResizeAspect;
-            
-             layer.caLayer = camSourcedLayer.previewLayer;
-            [baseLayer addSublayer:layer.caLayer];
+                [baseLayer addSublayer:layer.caLayer];
 
 
-        }else{
-            NSLog(@"WARNING: DSLayerView doesn't now how to display %@",[DSLayerSourceVideo class]);
+            // Camera
+            } else if([layer.source isKindOfClass:[DSLayerSourceCamera class]]){
+                DSLayerSourceCamera* camSourcedLayer = (DSLayerSourceCamera*)layer.source;
+               
+                [camSourcedLayer.previewLayer setFrame:NSMakeRect(0, 0, self.frame.size.width,self.frame.size.height)];
+                [camSourcedLayer.previewLayer setOpacity:layer.alpha];
+                //camSourcedLayer.previewLayer.position = CGPointMake(CGRectGetMidX(layer.caLayer.bounds), CGRectGetMidY(camSourcedLayer.previewLayer.bounds));
+                //((AVSampleBufferDisplayLayer*)layer.caLayer).videoGravity = AVLayerVideoGravityResizeAspect;
+                //camSourcedLayer.previewLayer.backgroundColor = CGColorGetConstantColor(kCGColorBlack);
+                //camSourcedLayer.previewLayer.layoutManager  = [CAConstraintLayoutManager layoutManager];
+                camSourcedLayer.previewLayer.autoresizingMask = kCALayerHeightSizable | kCALayerWidthSizable;
+                camSourcedLayer.previewLayer.contentsGravity = kCAGravityResizeAspect;
+                
+                 layer.caLayer = camSourcedLayer.previewLayer;
+                [baseLayer addSublayer:layer.caLayer];
+
+
+            }else{
+                
+                NSLog(@"WARNING: DSLayerView doesn't know how to display %@",layer.source.class);
+            }
         }
     }
     [CATransaction commit];

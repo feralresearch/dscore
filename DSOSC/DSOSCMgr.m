@@ -74,6 +74,7 @@
 }
 
 -(void)sendViaOSCAddress:(NSString *)address color:(NSColor *)color{
+    color = [color colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
     OSCMessage *newMsg = [OSCMessage createWithAddress:address];
     [newMsg addInt:(int)(color.redComponent*255)];
     [newMsg addInt:(int)(color.greenComponent*255)];
