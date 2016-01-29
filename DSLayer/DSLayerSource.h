@@ -13,10 +13,10 @@
 @interface DSLayerSource : NSObject
 
 
-
 @property NSString* name;
 @property BOOL warning;
 
+-(NSImage*) icon;
 -(GLuint) glTextureTarget;
 -(GLuint) glTexture;
 -(NSSize) size;

@@ -12,6 +12,7 @@
 #import "DSLayerSourceSyphon.h"
 #import "DSSyphonSource.h"
 #import "DSLayerSourceImage.h"
+#import "DSLayerSourceCamera.h"
 #import "DSLayerSourceVideo.h"
 #import "DSSyphonDisplayLayer.h"
 
@@ -54,6 +55,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(windowResized:) name:NSWindowDidResizeNotification
                                                object:[self window]];
+    
+    [self.layer setAnchorPoint:NSMakePoint(.5,.5 )];
+    [self cancelOperation:self];
 }
 
 -(NSMutableArray*)filterArray{
@@ -83,11 +87,11 @@
 }
 
 
-- (void)dealloc{
+-(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)windowResized:(NSNotification *)notification;{
+-(void)windowResized:(NSNotification *)notification;{
     //NSSize size = [[self window] frame].size;
     // [baseLayer setFrame:NSMakeRect(0, 0, size.width,size.height)];
     //NSLog(@"window width = %f, window height = %f", size.width,size.height);
@@ -105,7 +109,18 @@
     [self setBounds:oldBounds];
      */
 }
+
+-(void)moveLayer:(DSLayer*)layer toPosition:(int)position{
+    [_layers removeObject:layer];
+    [_layers insertObject:layer atIndex:position];
+    [self rebuildLayers];
+    
+}
+
 -(void)rebuildLayers{
+    [CATransaction begin];
+    [CATransaction setValue:(id)kCFBooleanTrue
+                     forKey:kCATransactionDisableActions];
     
     [baseLayer setSublayers:nil];
     baseLayer.layoutManager  = [CAConstraintLayoutManager layoutManager];
@@ -159,9 +174,29 @@
 
             [baseLayer addSublayer:layer.caLayer];
 
+
+        // Camera
+        } else if([layer.source isKindOfClass:[DSLayerSourceCamera class]]){
+            DSLayerSourceCamera* camSourcedLayer = (DSLayerSourceCamera*)layer.source;
+           
+            [camSourcedLayer.previewLayer setFrame:NSMakeRect(0, 0, self.frame.size.width,self.frame.size.height)];
+            [camSourcedLayer.previewLayer setOpacity:layer.alpha];
+            //camSourcedLayer.previewLayer.position = CGPointMake(CGRectGetMidX(layer.caLayer.bounds), CGRectGetMidY(camSourcedLayer.previewLayer.bounds));
+            //((AVSampleBufferDisplayLayer*)layer.caLayer).videoGravity = AVLayerVideoGravityResizeAspect;
+            //camSourcedLayer.previewLayer.backgroundColor = CGColorGetConstantColor(kCGColorBlack);
+            //camSourcedLayer.previewLayer.layoutManager  = [CAConstraintLayoutManager layoutManager];
+            camSourcedLayer.previewLayer.autoresizingMask = kCALayerHeightSizable | kCALayerWidthSizable;
+            camSourcedLayer.previewLayer.contentsGravity = kCAGravityResizeAspect;
             
+             layer.caLayer = camSourcedLayer.previewLayer;
+            [baseLayer addSublayer:layer.caLayer];
+
+
+        }else{
+            NSLog(@"WARNING: DSLayerView doesn't now how to display %@",[DSLayerSourceVideo class]);
         }
     }
+    [CATransaction commit];
 
     //CGAffineTransform rotateTransform = CGAffineTransformMakeRotation(M_PI / 2.0);
     //[imageLayer setAffineTransform:rotateTransform];
@@ -171,13 +206,13 @@
 -(void)removeAllLayers{
     [_layers removeAllObjects];
 }
--(DSLayer*)addEmptyLayer{
-    [self initLayerArray];
-    DSLayer* newLayer = [[DSLayer alloc] initWithPlaceholder];
-    [_layers addObject:newLayer];
-    [self rebuildLayers];
-    return newLayer;
+
+-(void)removeLayer:(DSLayer*)layer{
+    [layer.caLayer removeFromSuperlayer];
+    [_layers removeObject:layer];
 }
+
+
 -(DSLayer*)replaceLayerwithPlaceholder:(int)layerIndex{
     [self initLayerArray];
     if(layerIndex>_layers.count){
@@ -198,18 +233,6 @@
 }
 -(float)alphaForLayer:(long)layerIndex{return 0.0;}
 -(void)setAlpha:(float)alpha forLayer:(long)layerIndex{}
-
--(DSLayer*)addSyphonLayer:(NSString*)syphonName{
-    return [self addSyphonLayer:syphonName withAlpha:1.0];
-}
--(DSLayer*)addSyphonLayer:(NSString*)syphonName withAlpha:(float)alpha{
-    [self initLayerArray];
-    DSLayer* newLayer = [[DSLayer alloc] initWithSyphonSource:syphonName];
-    [newLayer setAlpha:alpha];
-    [_layers addObject:newLayer];
-    [self rebuildLayers];
-    return newLayer;
-}
 -(DSLayer*)replaceLayer:(int)layerIndex withSyphonLayer:(NSString*)syphonName{
     [self initLayerArray];
     if(layerIndex>_layers.count){
@@ -229,6 +252,32 @@
     return nil;
 }
 
+
+
+/////////// Layers ////////////
+
+-(DSLayer*)addEmptyLayer{
+    [self initLayerArray];
+    DSLayer* newLayer = [[DSLayer alloc] initWithPlaceholder];
+    [newLayer setParentView:self];
+    [_layers addObject:newLayer];
+    [self rebuildLayers];
+    return newLayer;
+}
+-(DSLayer*)addSyphonLayer:(NSString*)syphonName{
+    DSLayer* newLayer =[self addSyphonLayer:syphonName withAlpha:1.0];
+    [newLayer setParentView:self];
+    return newLayer;
+}
+-(DSLayer*)addSyphonLayer:(NSString*)syphonName withAlpha:(float)alpha{
+    [self initLayerArray];
+    DSLayer* newLayer = [[DSLayer alloc] initWithSyphonSource:syphonName];
+    [newLayer setAlpha:alpha];
+    [newLayer setParentView:self];
+    [_layers addObject:newLayer];
+    [self rebuildLayers];
+    return newLayer;
+}
 -(DSLayer*)addVideoLayer:(NSString *)path{
     return [self addVideoLayer:path withAlpha:1.0 loop:NO];
 }
@@ -236,14 +285,14 @@
     return [self addVideoLayer:path withAlpha:alpha loop:NO];
 }
 -(DSLayer*)addVideoLayer:(NSString *)path withAlpha:(float)alpha loop:(BOOL)shouldLoop{
-    DSLayer* vidLayer =[self addImageLayer:path withAlpha:alpha];
-    [vidLayer setLoop:shouldLoop];
-    return vidLayer;
+    DSLayer* newLayer =[self addImageLayer:path withAlpha:alpha];
+    [newLayer setLoop:shouldLoop];
+    [newLayer setParentView:self];
+    return newLayer;
 }
 -(DSLayer*)replaceLayer:(int)layerIndex withVideoLayer:(NSString *)path{
     return [self replaceLayer:layerIndex withImageLayer:path];
 }
-
 -(DSLayer*)addImageLayer:(NSString*)path{
     return [self addImageLayer:path withAlpha:1.0];
 }
@@ -251,16 +300,49 @@
     [self initLayerArray];
     DSLayer* newLayer = [[DSLayer alloc] initWithPath:path];
     [newLayer setAlpha:alpha];
+    [newLayer setParentView:self];
     [_layers addObject:newLayer];
     [self rebuildLayers];
     return newLayer;
 }
+
 -(DSLayer*)replaceLayer:(int)layerIndex withImageLayer:(NSString*)path{
     [self initLayerArray];
     if(layerIndex>_layers.count){
         NSLog(@"WARNING: No layer at index %i, not replacing anything",layerIndex);
     }else{
         DSLayer* newLayer = [[DSLayer alloc] initWithPath:path];
+        if(_layers.count != 0){
+            DSLayer* existingLayer=[_layers objectAtIndex:layerIndex];
+            [newLayer setAlpha:existingLayer.alpha];
+            [_layers replaceObjectAtIndex:layerIndex withObject:newLayer];
+        }else{
+            [_layers addObject:newLayer];
+        }
+        [self rebuildLayers];
+        return newLayer;
+    }
+    return nil;
+}
+
+-(DSLayer*)addCameraLayer:(AVCaptureDevice*)device withAlpha:(float)alpha{
+    [self initLayerArray];
+     DSLayer* newLayer = [[DSLayer alloc] initWithAVCaptureDevice:device];
+    [newLayer setAlpha:alpha];
+    [newLayer setParentView:self];
+    [_layers addObject:newLayer];
+    [self rebuildLayers];
+
+    return newLayer;
+}
+-(DSLayer*)addCameraLayer:(AVCaptureDevice*)device{
+    return [self addCameraLayer:device withAlpha:1.0];
+}
+-(DSLayer*)replaceLayer:(int)layerIndex withCameraLayer:(AVCaptureDevice*)device{
+    if(layerIndex>_layers.count){
+        NSLog(@"WARNING: No layer at index %i, not replacing anything",layerIndex);
+    }else{
+        DSLayer* newLayer = [[DSLayer alloc] initWithAVCaptureDevice:device];
         if(_layers.count != 0){
             DSLayer* existingLayer=[_layers objectAtIndex:layerIndex];
             [newLayer setAlpha:existingLayer.alpha];
@@ -281,7 +363,6 @@
     }
     return FALSE;
 }
-
 
 // ESC key
 - (BOOL)acceptsFirstResponder{return YES;}
@@ -393,6 +474,13 @@
 }
 
 -(void)applyTransformationToBaseLayer{
+    
+    CALayer* operateOn;
+    if(_selectedLayer){
+        operateOn = _selectedLayer.caLayer;
+    }else{
+        operateOn=baseLayer;
+    }
     CGAffineTransform rotation = CGAffineTransformRotate(CGAffineTransformIdentity, _rotation/180*M_PI);
     CGAffineTransform scale = CGAffineTransformScale(CGAffineTransformIdentity,_scaleZ,_scaleZ);
     CGAffineTransform rotscale = CGAffineTransformConcat(rotation,scale);
@@ -400,12 +488,12 @@
     [CATransaction setDisableActions:YES];
     [CATransaction setAnimationDuration:0.0];
     
-        [baseLayer setAffineTransform:rotscale];
+        [operateOn setAffineTransform:rotscale];
         [CATransaction setCompletionBlock:^{
             [CATransaction begin];
             [CATransaction setDisableActions:YES];
             [CATransaction setAnimationDuration:0.0];
-           [baseLayer setPosition:CGPointMake(_shiftX,_shiftY)];
+           [operateOn setPosition:CGPointMake(_shiftX,_shiftY)];
             [CATransaction commit];
         }];
     [CATransaction commit];
@@ -417,6 +505,14 @@
 
 - (NSRect)focusRingMaskBounds {
     return [self bounds];
+}
+
+-(float)alpha{
+    return _alpha;
+}
+-(void)setAlpha:(float)alpha{
+    _alpha = alpha;
+    [baseLayer setOpacity:alpha];
 }
 
 @end

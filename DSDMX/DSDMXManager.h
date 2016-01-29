@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#include "Ftd2xx.h"
+#import "Ftd2xx.h"
 @class DSDMXBox;
 
 // Enttec Pro definitions
@@ -65,11 +65,15 @@ struct ReceivedDmxCosStruct
 @interface DSDMXManager : NSObject{
     DMXUSBPROParamsType PRO_Params;
     NSString* _statusMessage;
+    NSTimer *timer;
+    
 }
 
+@property BOOL updateNeeded;
 -(BOOL) error;
 -(void)resetErrorMsg;
 
+@property NSData* DMXData;
 @property NSString* statusMessage;
 @property (readonly) NSImage* statusLight;
 

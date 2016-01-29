@@ -7,15 +7,30 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 #import "DSLayerSource.h"
 #import "DSLayerTransformation.h"
 #import "DSLayer.h"
+#import "DSLayerView.h"
 #import "DSLayerTransformation.h"
+#import "DSLayerSourceCamera.h"
 #import "DSLayerSourceSyphon.h"
 #import "DSLayerSourceImage.h"
 #import "DSLayerSourceVideo.h"
+#import "DSLayerSourceText.h"
 
 @implementation DSLayer
+
+- (id)initWithAVCaptureDevice:(AVCaptureDevice*)device{
+    if (self = [super init]){
+        _filters = [[NSMutableArray alloc] init];
+        _transformation = [[DSLayerTransformation alloc] init];
+        _alpha=1.0;
+        _source = [[DSLayerSourceCamera alloc] initWithCameraID:device.uniqueID];
+        [self setName:device.localizedName];
+    }
+    return self;
+}
 
 - (id)initWithSyphonSource:(NSString*)syphonName{
     if (self = [super init]){
@@ -23,7 +38,7 @@
         _transformation = [[DSLayerTransformation alloc] init];
         _alpha=1.0;
         _source = [[DSLayerSourceSyphon alloc] initWithServerDesc:syphonName];
-        _name = @"UNTITLED";
+        [self setName:syphonName];
     }
     return self;
 }
@@ -33,7 +48,8 @@
         _filters = [[NSMutableArray alloc] init];
         _transformation = [[DSLayerTransformation alloc] init];
         _alpha=1.0;
-
+        [self setName:path.lastPathComponent];
+        
         // Determine if path is an image or a video
         if(path.length != 0){
             CFStringRef fileExtension = (__bridge CFStringRef) [path pathExtension];
@@ -51,6 +67,14 @@
         
     }
     return self;
+}
+
+-(float)alpha{
+    return _alpha;
+}
+-(void)setAlpha:(float)alpha{
+    _alpha = alpha;
+    [_caLayer setOpacity:alpha];
 }
 
 - (id)initWithPlaceholder{
@@ -74,6 +98,12 @@
 
     }else if([_source isKindOfClass:[DSLayerSourceVideo class]]){
         return @"video";
+        
+    }else if([_source isKindOfClass:[DSLayerSourceCamera class]]){
+        return @"camera";
+
+    }else if([_source isKindOfClass:[DSLayerSourceText class]]){
+        return @"text";
 
     }else{
         return @"unknown";
@@ -123,6 +153,13 @@
     NSMutableArray* newFilterArray = self.filterArray;
     [filterArray removeObject:filter];
     [self setFilterArray:newFilterArray];
+}
+-(void)removeSelf{
+    [_parentView removeLayer:self];
+}
+
+-(void)moveLayerToPosition:(int)position{
+    [_parentView moveLayer:self toPosition:position];
 }
 
 @end

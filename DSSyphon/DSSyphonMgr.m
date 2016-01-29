@@ -4,33 +4,18 @@
 //  Created by Andrew on 11/21/15.
 //  Copyright © 2015 Digital Scenographic. All rights reserved.
 //
-/*
 
- This is a singleton, and supports both delegate and Notifications (sends "SyphonSourceChange")
- 
-*/
-//
-#import <Foundation/Foundation.h>
-#import "DSSyphonMgr.h"
+#import "CWLSynthesizeSingleton.h"
 #import <Syphon/Syphon.h>
 #import "DSSyphonSource.h"
+#import "DSSyphonMgr.h"
+
 @implementation DSSyphonMgr
 
+CWL_SYNTHESIZE_SINGLETON_FOR_CLASS(DSSyphonMgr)
 
-+ (id)sharedInstance {
-    static DSSyphonMgr *myInstance = nil; //Local static variable
-
-    //Using dispatch_once from GCD. This method is thread safe
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        myInstance = [[self alloc] init];
-    });
-    return myInstance;
-    
-}
-
-- (id)init {
-    if (self = [super init]) {
+- (id)init{
+    if (self = [super init]){
         _syphonSourcesByDesc=[[NSMutableDictionary alloc] init];
         [self refreshSyphonSources];
 

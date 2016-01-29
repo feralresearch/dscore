@@ -17,6 +17,7 @@
 
 @implementation DSDMXManager
 
+static DSDMXManager *_sharedInstance;
 + (id)sharedInstance {
     static DSDMXManager *myInstance = nil; //Local static variable
     
@@ -28,14 +29,66 @@
     return myInstance;
     
 }
-- (id)init{
-    if (self = [super init]){
-        [self resetErrorMsg];
-        [self scanForDevices];
+-(id)init{
+    @synchronized(self){
+        if (_sharedInstance == nil){
+            _sharedInstance = [[DSDMXManager alloc] actualInit];
+        }
     }
+    
+    return _sharedInstance;
+}
+- (id)actualInit{
+    [self resetErrorMsg];
+    [self scanForDevices];
+    
+    unsigned char dmxData[DMX_DATA_LENGTH];
+    memset(dmxData,0,DMX_DATA_LENGTH);
+    _DMXData = [NSData dataWithBytes:dmxData length:sizeof(unsigned char)*DMX_DATA_LENGTH];
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:.1
+                                     target:self
+                                   selector:@selector(updateLights)
+                                   userInfo:nil
+                                    repeats:YES];
+    
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    
     return self;
 }
 
+
+-(void)updateLights{
+    if(_updateNeeded){
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    // actual send function called
+    DSDMXBox *box = [_availableDevices firstObject];
+    unsigned char* myData = (unsigned char*)[ [[DSDMXManager sharedInstance] DMXData] bytes];
+    BOOL res = [[DSDMXManager sharedInstance]FTDI_SendData:box.device_handle
+                                                     label:SET_DMX_TX_MODE
+                                                      data:myData
+                                                    length:DMX_DATA_LENGTH];
+    
+    // check response from Send function
+    if (!res){
+        //[[DSDMXManager sharedInstance] setStatusMessage:@"FAILED: Sending DMX to PRO"];
+        NSLog(@"FAILED: Sending DMX to PRO");
+        [[DSDMXManager sharedInstance] FTDI_ClosePort:box.device_handle];
+    }else{
+        // Even if we don't care about this, we need to retrieve it or bad things happen
+        // FIXME: Ugh, I thought this would resolve the box hanging on exit issue, it improves but doesn't fix
+        unsigned char myDmxIn[DMX_DATA_LENGTH];
+        myDmxIn[0] =0;
+        res = [[DSDMXManager sharedInstance] FTDI_RxDMX:box.device_handle
+                                                  label:SET_DMX_RX_MODE
+                                                   data:myDmxIn
+                                        expected_length:DMX_DATA_LENGTH];
+    }
+    [[DSDMXManager sharedInstance] FTDI_PurgeBuffer:box.device_handle];
+        [self setUpdateNeeded:NO];
+            });
+    }
+}
 
 -(long)scanForDevices{
     

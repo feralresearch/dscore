@@ -12,23 +12,26 @@
 @class OSCManager;
 
 @class AppDelegate;
+@class NSColor;
 
-#include "OSCerProtocol.h"
+#include "DSOSCMgrProtocol.h"
 
 @interface DSOSCMgr : NSObject{
     OSCManager* manager;
     AppDelegate* thisAppDelegate;
 }
 
-@property (nonatomic, weak) id <OSCerDelegate> delegate; //define MyClassDelegate as delegate
+@property (nonatomic, weak) id <DSOSCMgrDelegate> delegate; //define MyClassDelegate as delegate
 
 @property (readonly)  NSDate *lastMsgRecieved;
 @property OSCOutPort* output;
 @property OSCOutPort* input;
 @property BOOL bindError;
 
+
 -(id)initWithIP:(NSString*)ip port:(NSString*)port listenOn:(NSString*)port;
 -(void)sendViaOSCAddress:(NSString *)address value:(id)val type:(NSString*)type;
+-(void)sendViaOSCAddress:(NSString *)address color:(NSColor*)color;
 -(void)sendViaOSCAddress:(NSString *)address f_val:(float)val;
 -(void)shutdown;
 

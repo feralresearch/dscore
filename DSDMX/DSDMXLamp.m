@@ -29,8 +29,10 @@
         _green=0;
         _blue=0;
         _white=0;
-        [self off];
         [_box.lamps setObject:self forKey:[NSString stringWithFormat:@"%i",_address]];
+        
+        [self off];
+        
     }
     return self;
 }
@@ -42,6 +44,8 @@
 
 -(void)setR:(int)red G:(int)green B:(int)blue W:(int)white{
     
+    
+    
     // Keep things 0-255
     red=red<0?0:red;
     red=red>255?255:red;
@@ -52,19 +56,18 @@
     white=white<0?0:white;
     white=white>255?255:white;
     
+
     //NSLog(@"Set #%i, (%i,%i,%i | %i)",_address,red,green,blue,white);
     
     
-        unsigned char myDmx[DMX_DATA_LENGTH];
-        unsigned char myDmxIn[DMX_DATA_LENGTH];
     
         // initialize with data to send
-        memset(myDmx,0,DMX_DATA_LENGTH);
-        
+        //memset(myDmx,0,DMX_DATA_LENGTH);
+        unsigned char* myDmx = (unsigned char*)[ [[DSDMXManager sharedInstance] DMXData] bytes];
+    
         // Start Code = 0
         // Mode RGBW4
         myDmx[0] = 0;
-        myDmxIn[0] =0;
 
         int r_channel = _address;
         int g_channel = _address+1;
@@ -77,26 +80,16 @@
         myDmx[w_channel]=white;
 
 
-        // actual send function called
-        BOOL res = [_box.dmxMgr FTDI_SendData:_box.device_handle label:SET_DMX_TX_MODE data:myDmx length:DMX_DATA_LENGTH];
+
+        
+        [self setRed:red];
+        [self setGreen:green];
+        [self setBlue:blue];
+        [self setWhite:white];
+     //   }
+        [[DSDMXManager sharedInstance] setUpdateNeeded:YES];
+
     
-        // check response from Send function
-        if (!res){
-            printf("FAILED: Sending DMX to PRO \n");
-            [_box.dmxMgr FTDI_ClosePort:_box.device_handle];
-        }else{
-            // Even if we don't care about this, we need to retrieve it or bad things happen
-            res = [_box.dmxMgr FTDI_RxDMX:_box.device_handle
-                                    label:SET_DMX_RX_MODE
-                                     data:myDmxIn
-                          expected_length:513];
-        }
-        [_box.dmxMgr FTDI_PurgeBuffer:_box.device_handle];
-    
-    _red=red;
-    _blue=blue;
-    _green=green;
-    _white=white;
     
 }
 

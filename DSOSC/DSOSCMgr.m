@@ -1,13 +1,13 @@
 //
-//  OSCer.m
+//  DSOSCMgr.m
 //  Watcher
 //
 //  Created by Andrew on 11/11/15.
 //  Copyright © 2015 Digital Scenographic. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "OSCerProtocol.h"
+#import <Cocoa/Cocoa.h>
+#import "DSOSCMgrProtocol.h"
 #import "DSOSCMgr.h"
 #import <VVOSC/VVOSC.h>
 #import "OSCer.h"
@@ -73,5 +73,13 @@
     [delegate receivedOSCMessage:m];
 }
 
+-(void)sendViaOSCAddress:(NSString *)address color:(NSColor *)color{
+    OSCMessage *newMsg = [OSCMessage createWithAddress:address];
+    [newMsg addInt:(int)(color.redComponent*255)];
+    [newMsg addInt:(int)(color.greenComponent*255)];
+    [newMsg addInt:(int)(color.blueComponent*255)];
+    [newMsg addInt:0.0];
+    [_output sendThisMessage:newMsg];
+}
 
 @end

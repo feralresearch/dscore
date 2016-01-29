@@ -20,7 +20,7 @@
 -(id)initWithServerDesc:(NSString*)syphonDesc{
     if (self = [super init]){
         _requestedSyphonServer=syphonDesc;
-        syphonMgr = [DSSyphonMgr sharedInstance];
+        syphonMgr = [DSSyphonMgr sharedDSSyphonMgr];
 
         _syphonSource=[syphonMgr.syphonSourcesByDesc valueForKey:_requestedSyphonServer];
 

@@ -541,8 +541,9 @@
     
     NSImage *image=[[NSImage alloc] initWithSize:NSMakeSize(width,height)];
     [image addRepresentation:imageRep];
-    [image setFlipped:YES];
-    [image lockFocusOnRepresentation:imageRep]; // This will flip the rep.
+    NSLog(@"ERROR: FIXME: I probably don't work anymore");
+    //[image setFlipped:YES];
+    //[image lockFocusOnRepresentation:imageRep]; // This will flip the rep.
     [image unlockFocus];
     
     return image;

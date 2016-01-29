@@ -11,6 +11,43 @@
 		4915D3CA1C33140A00BD7E27 /* ftd2xx.h in Headers */ = {isa = PBXBuildFile; fileRef = 4915D3C91C33140A00BD7E27 /* ftd2xx.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4915D3DF1C342B5500BD7E27 /* DSLayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4915D3DD1C342B5500BD7E27 /* DSLayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4915D3E01C342B5500BD7E27 /* DSLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4915D3DE1C342B5500BD7E27 /* DSLayerView.m */; settings = {ASSET_TAGS = (); }; };
+		491B91931C5B035800BA1ABD /* DSCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B918D1C5B035800BA1ABD /* DSCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491B91941C5B035800BA1ABD /* DSCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B918E1C5B035800BA1ABD /* DSCamera.m */; settings = {ASSET_TAGS = (); }; };
+		491B91951C5B035800BA1ABD /* DSCameraManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B918F1C5B035800BA1ABD /* DSCameraManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491B91961C5B035800BA1ABD /* DSCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B91901C5B035800BA1ABD /* DSCameraManager.m */; settings = {ASSET_TAGS = (); }; };
+		491B91971C5B035800BA1ABD /* DSCameraView.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B91911C5B035800BA1ABD /* DSCameraView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491B91981C5B035800BA1ABD /* DSCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B91921C5B035800BA1ABD /* DSCameraView.m */; settings = {ASSET_TAGS = (); }; };
+		491B91B11C5B7C8E00BA1ABD /* DSLayerSourceCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B91AF1C5B7C8E00BA1ABD /* DSLayerSourceCamera.h */; settings = {ASSET_TAGS = (); }; };
+		491B91B21C5B7C8E00BA1ABD /* DSLayerSourceCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B91B01C5B7C8E00BA1ABD /* DSLayerSourceCamera.m */; settings = {ASSET_TAGS = (); }; };
+		491B91D21C5B81F500BA1ABD /* DSLayerSourceText.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B91D01C5B81F500BA1ABD /* DSLayerSourceText.h */; settings = {ASSET_TAGS = (); }; };
+		491B91D31C5B81F500BA1ABD /* DSLayerSourceText.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B91D11C5B81F500BA1ABD /* DSLayerSourceText.m */; settings = {ASSET_TAGS = (); }; };
+		491B927D1C5B9EC700BA1ABD /* GradientPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491B92621C5B9EC700BA1ABD /* GradientPanel.xib */; settings = {ASSET_TAGS = (); }; };
+		491B92F71C5BA2B200BA1ABD /* XMViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B92DD1C5BA2B200BA1ABD /* XMViewControl.m */; settings = {ASSET_TAGS = (); }; };
+		491B92F81C5BA2B200BA1ABD /* XMViewControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B92DE1C5BA2B200BA1ABD /* XMViewControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491B92F91C5BA2B200BA1ABD /* XMGradientWell.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B92DF1C5BA2B200BA1ABD /* XMGradientWell.m */; settings = {ASSET_TAGS = (); }; };
+		491B92FA1C5BA2B200BA1ABD /* XMGradientWell.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B92E01C5BA2B200BA1ABD /* XMGradientWell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491B92FB1C5BA2B200BA1ABD /* XMGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B92E11C5BA2B200BA1ABD /* XMGradientView.m */; settings = {ASSET_TAGS = (); }; };
+		491B92FC1C5BA2B200BA1ABD /* XMGradientView.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B92E21C5BA2B200BA1ABD /* XMGradientView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491B92FD1C5BA2B200BA1ABD /* XMGradientPickerLinear.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B92E31C5BA2B200BA1ABD /* XMGradientPickerLinear.m */; settings = {ASSET_TAGS = (); }; };
+		491B92FE1C5BA2B200BA1ABD /* XMGradientPickerLinear.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B92E41C5BA2B200BA1ABD /* XMGradientPickerLinear.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491B92FF1C5BA2B200BA1ABD /* XMGradientPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B92E51C5BA2B200BA1ABD /* XMGradientPicker.m */; settings = {ASSET_TAGS = (); }; };
+		491B93001C5BA2B200BA1ABD /* XMGradientPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B92E61C5BA2B200BA1ABD /* XMGradientPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491B93011C5BA2B200BA1ABD /* XMGradientPanelAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B92E71C5BA2B200BA1ABD /* XMGradientPanelAppDelegate.m */; settings = {ASSET_TAGS = (); }; };
+		491B93021C5BA2B200BA1ABD /* XMGradientPanelAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B92E81C5BA2B200BA1ABD /* XMGradientPanelAppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491B93031C5BA2B200BA1ABD /* XMGradientPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B92E91C5BA2B200BA1ABD /* XMGradientPanel.m */; settings = {ASSET_TAGS = (); }; };
+		491B93041C5BA2B200BA1ABD /* XMGradientPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B92EA1C5BA2B200BA1ABD /* XMGradientPanel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491B93051C5BA2B200BA1ABD /* XMGradientPanel-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 491B92EB1C5BA2B200BA1ABD /* XMGradientPanel-Prefix.pch */; settings = {ASSET_TAGS = (); }; };
+		491B93061C5BA2B200BA1ABD /* XMGradientPanel-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 491B92EC1C5BA2B200BA1ABD /* XMGradientPanel-Info.plist */; settings = {ASSET_TAGS = (); }; };
+		491B93071C5BA2B200BA1ABD /* XMColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B92ED1C5BA2B200BA1ABD /* XMColorWell.m */; settings = {ASSET_TAGS = (); }; };
+		491B93081C5BA2B200BA1ABD /* XMColorWell.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B92EE1C5BA2B200BA1ABD /* XMColorWell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491B93091C5BA2B200BA1ABD /* XMApplicationSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B92EF1C5BA2B200BA1ABD /* XMApplicationSupport.m */; settings = {ASSET_TAGS = (); }; };
+		491B930A1C5BA2B200BA1ABD /* XMApplicationSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B92F01C5BA2B200BA1ABD /* XMApplicationSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491B930B1C5BA2B200BA1ABD /* NSGradientHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B92F11C5BA2B200BA1ABD /* NSGradientHelper.m */; settings = {ASSET_TAGS = (); }; };
+		491B930C1C5BA2B200BA1ABD /* NSGradientHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B92F21C5BA2B200BA1ABD /* NSGradientHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491B930D1C5BA2B200BA1ABD /* NSGradient+XMUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B92F31C5BA2B200BA1ABD /* NSGradient+XMUtilities.m */; settings = {ASSET_TAGS = (); }; };
+		491B930E1C5BA2B200BA1ABD /* NSGradient+XMUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B92F41C5BA2B200BA1ABD /* NSGradient+XMUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491B930F1C5BA2B200BA1ABD /* NSGradient+XMGradients.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B92F51C5BA2B200BA1ABD /* NSGradient+XMGradients.m */; settings = {ASSET_TAGS = (); }; };
+		491B93101C5BA2B200BA1ABD /* NSGradient+XMGradients.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B92F61C5BA2B200BA1ABD /* NSGradient+XMGradients.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		493A07471C2734B200199A52 /* NSImage+util.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A07431C2734B200199A52 /* NSImage+util.m */; settings = {ASSET_TAGS = (); }; };
 		493A07521C2734BC00199A52 /* DSDMXBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A074C1C2734BC00199A52 /* DSDMXBox.m */; settings = {ASSET_TAGS = (); }; };
 		493A07541C2734BC00199A52 /* DSDMXLamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A074E1C2734BC00199A52 /* DSDMXLamp.m */; settings = {ASSET_TAGS = (); }; };
@@ -25,6 +62,7 @@
 		493A077D1C2734CD00199A52 /* OSCer.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A07791C2734CD00199A52 /* OSCer.m */; settings = {ASSET_TAGS = (); }; };
 		493A07841C2734D400199A52 /* DSSyphonMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A07801C2734D400199A52 /* DSSyphonMgr.m */; settings = {ASSET_TAGS = (); }; };
 		493A07861C2734D400199A52 /* DSSyphonSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 493A07821C2734D400199A52 /* DSSyphonSource.m */; settings = {ASSET_TAGS = (); }; };
+		493A90051C5A9EDC009B6D90 /* CWLSynthesizeSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 493A90041C5A9EDC009B6D90 /* CWLSynthesizeSingleton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4952FC351C27947700D7003B /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4952FC341C27945A00D7003B /* Syphon.framework */; };
 		496572D51C27798A0027A429 /* DSCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 493A07341C27336E00199A52 /* DSCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		496572D61C2779BC0027A429 /* DSSyphonMgr.h in Headers */ = {isa = PBXBuildFile; fileRef = 493A077F1C2734D400199A52 /* DSSyphonMgr.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -41,6 +79,8 @@
 		496572E11C2779BC0027A429 /* DSDMXLamp.h in Headers */ = {isa = PBXBuildFile; fileRef = 493A074D1C2734BC00199A52 /* DSDMXLamp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		496572E21C2779BC0027A429 /* DSDMXManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 493A074F1C2734BC00199A52 /* DSDMXManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		496572E31C2779BC0027A429 /* NSImage+util.h in Headers */ = {isa = PBXBuildFile; fileRef = 493A07421C2734B200199A52 /* NSImage+util.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49A875081C5A5B8800B59FB9 /* DSOutputResolution.h in Headers */ = {isa = PBXBuildFile; fileRef = 49A875061C5A5B8800B59FB9 /* DSOutputResolution.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49A875091C5A5B8800B59FB9 /* DSOutputResolution.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A875071C5A5B8800B59FB9 /* DSOutputResolution.m */; settings = {ASSET_TAGS = (); }; };
 		49B3A4381C2737AC00EB54D4 /* libopencv_calib3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B3A4211C2737AB00EB54D4 /* libopencv_calib3d.a */; settings = {ASSET_TAGS = (); }; };
 		49B3A4391C2737AC00EB54D4 /* libopencv_contrib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B3A4221C2737AB00EB54D4 /* libopencv_contrib.a */; settings = {ASSET_TAGS = (); }; };
 		49B3A43A1C2737AC00EB54D4 /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B3A4231C2737AB00EB54D4 /* libopencv_core.a */; settings = {ASSET_TAGS = (); }; };
@@ -72,7 +112,8 @@
 		49C41C051C34A7FA0024154B /* NSView+util.h in Headers */ = {isa = PBXBuildFile; fileRef = 49C41C031C34A7FA0024154B /* NSView+util.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49C41C061C34A7FA0024154B /* NSView+util.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C41C041C34A7FA0024154B /* NSView+util.m */; settings = {ASSET_TAGS = (); }; };
 		49C41C0E1C34C21B0024154B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C41C0D1C34C21B0024154B /* AVFoundation.framework */; };
-		49E230B81C278A2F0055EF53 /* OSCerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E230B71C278A160055EF53 /* OSCerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49D74D731C5BCD010061F63C /* WinTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 49D74D721C5BCD010061F63C /* WinTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49E230B81C278A2F0055EF53 /* DSOSCMgrProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E230B71C278A160055EF53 /* DSOSCMgrProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,6 +341,43 @@
 		4915D3C91C33140A00BD7E27 /* ftd2xx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftd2xx.h; path = Frameworks/ftd2xx.h; sourceTree = "<group>"; };
 		4915D3DD1C342B5500BD7E27 /* DSLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLayerView.h; sourceTree = "<group>"; };
 		4915D3DE1C342B5500BD7E27 /* DSLayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLayerView.m; sourceTree = "<group>"; };
+		491B918D1C5B035800BA1ABD /* DSCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCamera.h; sourceTree = "<group>"; };
+		491B918E1C5B035800BA1ABD /* DSCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCamera.m; sourceTree = "<group>"; };
+		491B918F1C5B035800BA1ABD /* DSCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCameraManager.h; sourceTree = "<group>"; };
+		491B91901C5B035800BA1ABD /* DSCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCameraManager.m; sourceTree = "<group>"; };
+		491B91911C5B035800BA1ABD /* DSCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCameraView.h; sourceTree = "<group>"; };
+		491B91921C5B035800BA1ABD /* DSCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCameraView.m; sourceTree = "<group>"; };
+		491B91AF1C5B7C8E00BA1ABD /* DSLayerSourceCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLayerSourceCamera.h; sourceTree = "<group>"; };
+		491B91B01C5B7C8E00BA1ABD /* DSLayerSourceCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLayerSourceCamera.m; sourceTree = "<group>"; };
+		491B91D01C5B81F500BA1ABD /* DSLayerSourceText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLayerSourceText.h; sourceTree = "<group>"; };
+		491B91D11C5B81F500BA1ABD /* DSLayerSourceText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLayerSourceText.m; sourceTree = "<group>"; };
+		491B92621C5B9EC700BA1ABD /* GradientPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradientPanel.xib; sourceTree = "<group>"; };
+		491B92DD1C5BA2B200BA1ABD /* XMViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMViewControl.m; sourceTree = "<group>"; };
+		491B92DE1C5BA2B200BA1ABD /* XMViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMViewControl.h; sourceTree = "<group>"; };
+		491B92DF1C5BA2B200BA1ABD /* XMGradientWell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGradientWell.m; sourceTree = "<group>"; };
+		491B92E01C5BA2B200BA1ABD /* XMGradientWell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMGradientWell.h; sourceTree = "<group>"; };
+		491B92E11C5BA2B200BA1ABD /* XMGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGradientView.m; sourceTree = "<group>"; };
+		491B92E21C5BA2B200BA1ABD /* XMGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMGradientView.h; sourceTree = "<group>"; };
+		491B92E31C5BA2B200BA1ABD /* XMGradientPickerLinear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGradientPickerLinear.m; sourceTree = "<group>"; };
+		491B92E41C5BA2B200BA1ABD /* XMGradientPickerLinear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMGradientPickerLinear.h; sourceTree = "<group>"; };
+		491B92E51C5BA2B200BA1ABD /* XMGradientPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGradientPicker.m; sourceTree = "<group>"; };
+		491B92E61C5BA2B200BA1ABD /* XMGradientPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMGradientPicker.h; sourceTree = "<group>"; };
+		491B92E71C5BA2B200BA1ABD /* XMGradientPanelAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGradientPanelAppDelegate.m; sourceTree = "<group>"; };
+		491B92E81C5BA2B200BA1ABD /* XMGradientPanelAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMGradientPanelAppDelegate.h; sourceTree = "<group>"; };
+		491B92E91C5BA2B200BA1ABD /* XMGradientPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGradientPanel.m; sourceTree = "<group>"; };
+		491B92EA1C5BA2B200BA1ABD /* XMGradientPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMGradientPanel.h; sourceTree = "<group>"; };
+		491B92EB1C5BA2B200BA1ABD /* XMGradientPanel-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XMGradientPanel-Prefix.pch"; sourceTree = "<group>"; };
+		491B92EC1C5BA2B200BA1ABD /* XMGradientPanel-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XMGradientPanel-Info.plist"; sourceTree = "<group>"; };
+		491B92ED1C5BA2B200BA1ABD /* XMColorWell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMColorWell.m; sourceTree = "<group>"; };
+		491B92EE1C5BA2B200BA1ABD /* XMColorWell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMColorWell.h; sourceTree = "<group>"; };
+		491B92EF1C5BA2B200BA1ABD /* XMApplicationSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMApplicationSupport.m; sourceTree = "<group>"; };
+		491B92F01C5BA2B200BA1ABD /* XMApplicationSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMApplicationSupport.h; sourceTree = "<group>"; };
+		491B92F11C5BA2B200BA1ABD /* NSGradientHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSGradientHelper.m; sourceTree = "<group>"; };
+		491B92F21C5BA2B200BA1ABD /* NSGradientHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSGradientHelper.h; sourceTree = "<group>"; };
+		491B92F31C5BA2B200BA1ABD /* NSGradient+XMUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSGradient+XMUtilities.m"; sourceTree = "<group>"; };
+		491B92F41C5BA2B200BA1ABD /* NSGradient+XMUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSGradient+XMUtilities.h"; sourceTree = "<group>"; };
+		491B92F51C5BA2B200BA1ABD /* NSGradient+XMGradients.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSGradient+XMGradients.m"; sourceTree = "<group>"; };
+		491B92F61C5BA2B200BA1ABD /* NSGradient+XMGradients.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSGradient+XMGradients.h"; sourceTree = "<group>"; };
 		493A07311C27336E00199A52 /* DSCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DSCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		493A07341C27336E00199A52 /* DSCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSCore.h; sourceTree = "<group>"; };
 		493A07361C27336E00199A52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -331,7 +409,10 @@
 		493A07801C2734D400199A52 /* DSSyphonMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSSyphonMgr.m; sourceTree = "<group>"; };
 		493A07811C2734D400199A52 /* DSSyphonSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSyphonSource.h; sourceTree = "<group>"; };
 		493A07821C2734D400199A52 /* DSSyphonSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSSyphonSource.m; sourceTree = "<group>"; };
+		493A90041C5A9EDC009B6D90 /* CWLSynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLSynthesizeSingleton.h; sourceTree = "<group>"; };
 		4952FC2E1C27945A00D7003B /* Syphon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Syphon.xcodeproj; path = "Frameworks/Syphon-Framework-public-beta-2/Syphon.xcodeproj"; sourceTree = "<group>"; };
+		49A875061C5A5B8800B59FB9 /* DSOutputResolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOutputResolution.h; sourceTree = "<group>"; };
+		49A875071C5A5B8800B59FB9 /* DSOutputResolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOutputResolution.m; sourceTree = "<group>"; };
 		49B3A3C61C2736AB00EB54D4 /* VVOpenSource.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VVOpenSource.xcodeproj; path = "Frameworks/vvopensource-master/VVOpenSource.xcodeproj"; sourceTree = "<group>"; };
 		49B3A4211C2737AB00EB54D4 /* libopencv_calib3d.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_calib3d.a; path = Libraries/openCV_2.4.11/lib/libopencv_calib3d.a; sourceTree = "<group>"; };
 		49B3A4221C2737AB00EB54D4 /* libopencv_contrib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_contrib.a; path = Libraries/openCV_2.4.11/lib/libopencv_contrib.a; sourceTree = "<group>"; };
@@ -365,7 +446,8 @@
 		49C41C091C34C17F0024154B /* CoreMediaIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMediaIO.framework; path = System/Library/Frameworks/CoreMediaIO.framework; sourceTree = SDKROOT; };
 		49C41C0B1C34C18C0024154B /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		49C41C0D1C34C21B0024154B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		49E230B71C278A160055EF53 /* OSCerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSCerProtocol.h; sourceTree = "<group>"; };
+		49D74D721C5BCD010061F63C /* WinTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WinTypes.h; path = DSCore/WinTypes.h; sourceTree = "<group>"; };
+		49E230B71C278A160055EF53 /* DSOSCMgrProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSOSCMgrProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -408,6 +490,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		491B916F1C5B034400BA1ABD /* DSCamera */ = {
+			isa = PBXGroup;
+			children = (
+				491B918D1C5B035800BA1ABD /* DSCamera.h */,
+				491B918E1C5B035800BA1ABD /* DSCamera.m */,
+				491B918F1C5B035800BA1ABD /* DSCameraManager.h */,
+				491B91901C5B035800BA1ABD /* DSCameraManager.m */,
+				491B91911C5B035800BA1ABD /* DSCameraView.h */,
+				491B91921C5B035800BA1ABD /* DSCameraView.m */,
+			);
+			path = DSCamera;
+			sourceTree = "<group>";
+		};
+		491B92611C5B9EC700BA1ABD /* XMGradient */ = {
+			isa = PBXGroup;
+			children = (
+				491B92DD1C5BA2B200BA1ABD /* XMViewControl.m */,
+				491B92DE1C5BA2B200BA1ABD /* XMViewControl.h */,
+				491B92DF1C5BA2B200BA1ABD /* XMGradientWell.m */,
+				491B92E01C5BA2B200BA1ABD /* XMGradientWell.h */,
+				491B92E11C5BA2B200BA1ABD /* XMGradientView.m */,
+				491B92E21C5BA2B200BA1ABD /* XMGradientView.h */,
+				491B92E31C5BA2B200BA1ABD /* XMGradientPickerLinear.m */,
+				491B92E41C5BA2B200BA1ABD /* XMGradientPickerLinear.h */,
+				491B92E51C5BA2B200BA1ABD /* XMGradientPicker.m */,
+				491B92E61C5BA2B200BA1ABD /* XMGradientPicker.h */,
+				491B92E71C5BA2B200BA1ABD /* XMGradientPanelAppDelegate.m */,
+				491B92E81C5BA2B200BA1ABD /* XMGradientPanelAppDelegate.h */,
+				491B92E91C5BA2B200BA1ABD /* XMGradientPanel.m */,
+				491B92EA1C5BA2B200BA1ABD /* XMGradientPanel.h */,
+				491B92EB1C5BA2B200BA1ABD /* XMGradientPanel-Prefix.pch */,
+				491B92EC1C5BA2B200BA1ABD /* XMGradientPanel-Info.plist */,
+				491B92ED1C5BA2B200BA1ABD /* XMColorWell.m */,
+				491B92EE1C5BA2B200BA1ABD /* XMColorWell.h */,
+				491B92EF1C5BA2B200BA1ABD /* XMApplicationSupport.m */,
+				491B92F01C5BA2B200BA1ABD /* XMApplicationSupport.h */,
+				491B92F11C5BA2B200BA1ABD /* NSGradientHelper.m */,
+				491B92F21C5BA2B200BA1ABD /* NSGradientHelper.h */,
+				491B92F31C5BA2B200BA1ABD /* NSGradient+XMUtilities.m */,
+				491B92F41C5BA2B200BA1ABD /* NSGradient+XMUtilities.h */,
+				491B92F51C5BA2B200BA1ABD /* NSGradient+XMGradients.m */,
+				491B92F61C5BA2B200BA1ABD /* NSGradient+XMGradients.h */,
+				491B92621C5B9EC700BA1ABD /* GradientPanel.xib */,
+			);
+			path = XMGradient;
+			sourceTree = SOURCE_ROOT;
+		};
 		493A07271C27336E00199A52 = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +545,7 @@
 				49C41C091C34C17F0024154B /* CoreMediaIO.framework */,
 				4952FC2E1C27945A00D7003B /* Syphon.xcodeproj */,
 				49B3A3C61C2736AB00EB54D4 /* VVOpenSource.xcodeproj */,
+				491B916F1C5B034400BA1ABD /* DSCamera */,
 				493A07331C27336E00199A52 /* DSCore */,
 				49B3A41C1C27378700EB54D4 /* Frameworks/Libs */,
 				493A077E1C2734D400199A52 /* DSSyphon */,
@@ -424,6 +554,7 @@
 				493A07571C2734C000199A52 /* DSLayer */,
 				493A074A1C2734BC00199A52 /* DSDMX */,
 				493A07411C2734B200199A52 /* DSClassExtensions */,
+				491B92611C5B9EC700BA1ABD /* XMGradient */,
 				493A07321C27336E00199A52 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -439,8 +570,11 @@
 		493A07331C27336E00199A52 /* DSCore */ = {
 			isa = PBXGroup;
 			children = (
+				493A90041C5A9EDC009B6D90 /* CWLSynthesizeSingleton.h */,
 				493A07341C27336E00199A52 /* DSCore.h */,
 				493A07361C27336E00199A52 /* Info.plist */,
+				49A875061C5A5B8800B59FB9 /* DSOutputResolution.h */,
+				49A875071C5A5B8800B59FB9 /* DSOutputResolution.m */,
 			);
 			path = DSCore;
 			sourceTree = "<group>";
@@ -474,8 +608,12 @@
 			children = (
 				4905DFD91C277653001A60E1 /* DSLayer.h */,
 				4905DFDA1C277653001A60E1 /* DSLayer.m */,
+				491B91D01C5B81F500BA1ABD /* DSLayerSourceText.h */,
+				491B91D11C5B81F500BA1ABD /* DSLayerSourceText.m */,
 				493A075A1C2734C000199A52 /* DSLayerSource.h */,
 				493A075B1C2734C000199A52 /* DSLayerSource.m */,
+				491B91AF1C5B7C8E00BA1ABD /* DSLayerSourceCamera.h */,
+				491B91B01C5B7C8E00BA1ABD /* DSLayerSourceCamera.m */,
 				493A075C1C2734C000199A52 /* DSLayerSourceImage.h */,
 				493A075D1C2734C000199A52 /* DSLayerSourceImage.m */,
 				493A075E1C2734C000199A52 /* DSLayerSourceSyphon.h */,
@@ -506,7 +644,7 @@
 				493A07771C2734CD00199A52 /* DSOSCMgr.m */,
 				493A07781C2734CD00199A52 /* OSCer.h */,
 				493A07791C2734CD00199A52 /* OSCer.m */,
-				49E230B71C278A160055EF53 /* OSCerProtocol.h */,
+				49E230B71C278A160055EF53 /* DSOSCMgrProtocol.h */,
 			);
 			path = DSOSC;
 			sourceTree = "<group>";
@@ -568,6 +706,7 @@
 		49B3A41C1C27378700EB54D4 /* Frameworks/Libs */ = {
 			isa = PBXGroup;
 			children = (
+				49D74D721C5BCD010061F63C /* WinTypes.h */,
 				4915D3C91C33140A00BD7E27 /* ftd2xx.h */,
 				49B3A44F1C273B2E00EB54D4 /* libftd2xx.1.2.2.dylib */,
 				49B3A4531C273BF900EB54D4 /* libz.dylib */,
@@ -605,14 +744,31 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491B92F81C5BA2B200BA1ABD /* XMViewControl.h in Headers */,
+				491B92FA1C5BA2B200BA1ABD /* XMGradientWell.h in Headers */,
+				491B92FC1C5BA2B200BA1ABD /* XMGradientView.h in Headers */,
+				491B92FE1C5BA2B200BA1ABD /* XMGradientPickerLinear.h in Headers */,
+				491B93001C5BA2B200BA1ABD /* XMGradientPicker.h in Headers */,
+				491B93021C5BA2B200BA1ABD /* XMGradientPanelAppDelegate.h in Headers */,
+				491B93041C5BA2B200BA1ABD /* XMGradientPanel.h in Headers */,
+				491B93081C5BA2B200BA1ABD /* XMColorWell.h in Headers */,
+				491B930A1C5BA2B200BA1ABD /* XMApplicationSupport.h in Headers */,
+				491B930C1C5BA2B200BA1ABD /* NSGradientHelper.h in Headers */,
+				491B930E1C5BA2B200BA1ABD /* NSGradient+XMUtilities.h in Headers */,
+				491B93101C5BA2B200BA1ABD /* NSGradient+XMGradients.h in Headers */,
 				4915D3CA1C33140A00BD7E27 /* ftd2xx.h in Headers */,
+				491B91D21C5B81F500BA1ABD /* DSLayerSourceText.h in Headers */,
+				493A90051C5A9EDC009B6D90 /* CWLSynthesizeSingleton.h in Headers */,
 				496572D51C27798A0027A429 /* DSCore.h in Headers */,
-				49E230B81C278A2F0055EF53 /* OSCerProtocol.h in Headers */,
+				49E230B81C278A2F0055EF53 /* DSOSCMgrProtocol.h in Headers */,
 				496572D61C2779BC0027A429 /* DSSyphonMgr.h in Headers */,
 				496572D71C2779BC0027A429 /* DSSyphonSource.h in Headers */,
 				496572D81C2779BC0027A429 /* DSOSCMgr.h in Headers */,
+				49A875081C5A5B8800B59FB9 /* DSOutputResolution.h in Headers */,
 				496572D91C2779BC0027A429 /* DSLayerViewGL.h in Headers */,
 				496572DA1C2779BC0027A429 /* DSLayer.h in Headers */,
+				491B91B11C5B7C8E00BA1ABD /* DSLayerSourceCamera.h in Headers */,
+				491B93051C5BA2B200BA1ABD /* XMGradientPanel-Prefix.pch in Headers */,
 				4915D3DF1C342B5500BD7E27 /* DSLayerView.h in Headers */,
 				496572DB1C2779BC0027A429 /* DSLayerSource.h in Headers */,
 				496572DC1C2779BC0027A429 /* DSLayerSourceImage.h in Headers */,
@@ -621,6 +777,10 @@
 				496572DF1C2779BC0027A429 /* DSLayerTransformation.h in Headers */,
 				496572E01C2779BC0027A429 /* DSDMXBox.h in Headers */,
 				496572E11C2779BC0027A429 /* DSDMXLamp.h in Headers */,
+				491B91931C5B035800BA1ABD /* DSCamera.h in Headers */,
+				491B91951C5B035800BA1ABD /* DSCameraManager.h in Headers */,
+				491B91971C5B035800BA1ABD /* DSCameraView.h in Headers */,
+				49D74D731C5BCD010061F63C /* WinTypes.h in Headers */,
 				496572E21C2779BC0027A429 /* DSDMXManager.h in Headers */,
 				49C41C051C34A7FA0024154B /* NSView+util.h in Headers */,
 				496572E31C2779BC0027A429 /* NSImage+util.h in Headers */,
@@ -891,6 +1051,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491B93061C5BA2B200BA1ABD /* XMGradientPanel-Info.plist in Resources */,
+				491B927D1C5B9EC700BA1ABD /* GradientPanel.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -917,24 +1079,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491B93071C5BA2B200BA1ABD /* XMColorWell.m in Sources */,
+				491B930D1C5BA2B200BA1ABD /* NSGradient+XMUtilities.m in Sources */,
 				493A076B1C2734C000199A52 /* DSLayerSourceSyphon.m in Sources */,
 				493A077B1C2734CD00199A52 /* DSOSCMgr.m in Sources */,
+				491B93031C5BA2B200BA1ABD /* XMGradientPanel.m in Sources */,
 				493A07541C2734BC00199A52 /* DSDMXLamp.m in Sources */,
 				493A07861C2734D400199A52 /* DSSyphonSource.m in Sources */,
+				491B92F71C5BA2B200BA1ABD /* XMViewControl.m in Sources */,
 				493A07741C2734C800199A52 /* DSLayerViewGL.m in Sources */,
+				491B93011C5BA2B200BA1ABD /* XMGradientPanelAppDelegate.m in Sources */,
 				493A076D1C2734C000199A52 /* DSLayerSourceVideo.m in Sources */,
+				491B92FD1C5BA2B200BA1ABD /* XMGradientPickerLinear.m in Sources */,
 				49C41C021C3485600024154B /* DSSyphonDisplayLayer.m in Sources */,
 				493A07671C2734C000199A52 /* DSLayerSource.m in Sources */,
+				491B92FB1C5BA2B200BA1ABD /* XMGradientView.m in Sources */,
+				491B930F1C5BA2B200BA1ABD /* NSGradient+XMGradients.m in Sources */,
+				491B91961C5B035800BA1ABD /* DSCameraManager.m in Sources */,
 				4915D3E01C342B5500BD7E27 /* DSLayerView.m in Sources */,
+				491B91941C5B035800BA1ABD /* DSCamera.m in Sources */,
 				49C41C061C34A7FA0024154B /* NSView+util.m in Sources */,
 				4905DFDC1C277653001A60E1 /* DSLayer.m in Sources */,
 				493A07521C2734BC00199A52 /* DSDMXBox.m in Sources */,
 				493A076F1C2734C000199A52 /* DSLayerTransformation.m in Sources */,
 				493A07841C2734D400199A52 /* DSSyphonMgr.m in Sources */,
+				491B91D31C5B81F500BA1ABD /* DSLayerSourceText.m in Sources */,
+				491B92FF1C5BA2B200BA1ABD /* XMGradientPicker.m in Sources */,
+				491B93091C5BA2B200BA1ABD /* XMApplicationSupport.m in Sources */,
+				491B91981C5B035800BA1ABD /* DSCameraView.m in Sources */,
 				493A07561C2734BC00199A52 /* DSDMXManager.m in Sources */,
+				491B92F91C5BA2B200BA1ABD /* XMGradientWell.m in Sources */,
 				493A077D1C2734CD00199A52 /* OSCer.m in Sources */,
 				493A07471C2734B200199A52 /* NSImage+util.m in Sources */,
 				493A07691C2734C000199A52 /* DSLayerSourceImage.m in Sources */,
+				491B91B21C5B7C8E00BA1ABD /* DSLayerSourceCamera.m in Sources */,
+				491B930B1C5BA2B200BA1ABD /* NSGradientHelper.m in Sources */,
+				49A875091C5A5B8800B59FB9 /* DSOutputResolution.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1056,7 +1236,7 @@
 				FRAMEWORK_VERSION = A;
 				HEADER_SEARCH_PATHS = /usr/local/include/;
 				INFOPLIST_FILE = DSCore/Info.plist;
-				INSTALL_PATH = "@executable_path/../Frameworks";
+				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1087,7 +1267,7 @@
 				FRAMEWORK_VERSION = A;
 				HEADER_SEARCH_PATHS = /usr/local/include/;
 				INFOPLIST_FILE = DSCore/Info.plist;
-				INSTALL_PATH = "@executable_path/../Frameworks";
+				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
