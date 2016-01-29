@@ -181,7 +181,7 @@
     NSSize offset = NSZeroSize;
     NSSize size;
     
-    if (!self.dragImage) self.dragImage = [self dragImage];
+    if (!self.dragImage) self.dragImage = [self dragImageImage];
 
     NSPasteboard *pboard = [NSPasteboard pasteboardWithName:NSDragPboard];
     [pboard declareTypes:[NSArray arrayWithObject: XMPasteboardTypeGradient] owner:self];
@@ -198,7 +198,19 @@
         [self setNeedsDisplay];
     }
     
-    [self dragImage:self.dragImage at:location offset:offset event:event pasteboard:pboard source:self slideBack:YES];  
+    
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        [self dragImage:self.dragImage
+                     at:location
+                 offset:offset
+                  event:event
+             pasteboard:pboard
+                 source:self
+              slideBack:YES];
+    #pragma clang diagnostic pop
+  
+    
 }
 
 - (BOOL)acceptsFirstMouse:(NSEvent *)theEvent {
@@ -275,7 +287,11 @@
 //    if (!self.isActive) return;
     
 	if([self.target respondsToSelector:self.action])
-		[self.target performSelector:self.action withObject:self];
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [self.target performSelector:self.action withObject:self];
+    #pragma clang diagnostic pop
+		
 }
 
 - (NSGradient *) gradient {
@@ -435,7 +451,7 @@
 
 // instead of constantly rechecking the pasteboard as the mouse moves inside the view
 // we'll simply return the cached value that we set in 'last' in draggingEntered:
-- (NSUInteger) draggingUpdated:sender
+- (NSDragOperation) draggingUpdated:sender
 {
     return lastDragged;
 }
@@ -479,7 +495,7 @@
     [self performAction];
 }
 
-- (NSUInteger) draggingSourceOperationMaskForLocal: (BOOL)flag {
+- (NSDragOperation) draggingSourceOperationMaskForLocal: (BOOL)flag {
     
     return NSDragOperationGeneric;
 }
@@ -494,7 +510,7 @@
 
 @implementation XMGradientWell (Pasteboard)
 
-- (NSImage *) dragImage {
+- (NSImage *) dragImageImage {
             
     NSRect swatchRect = NSMakeRect(0, 0, 12, 12);
     

@@ -28,6 +28,11 @@
     [gradientWell performSelector:@selector(activatePanel)];
 }
 
+
+-(void)activatePanel{
+    NSLog(@"WARNING: Unimplemented method activatePanel");
+}
+
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
     
 	return YES;

@@ -26,7 +26,7 @@
     BOOL badSelection;
     BOOL multipleSelection;
     
-    NSUInteger lastDragged;
+    NSDragOperation lastDragged;
     NSImage * _dragImage;
 }
 
@@ -64,7 +64,7 @@
 
 @interface XMGradientWell (Pasteboard) <NSPasteboardWriting, NSPasteboardReading> 
 
-- (NSImage *) dragImage;
+- (NSImage *) dragImageImage;
 
 - (NSArray *) pasteboardTypes;
 

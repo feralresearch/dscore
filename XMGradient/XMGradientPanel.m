@@ -76,7 +76,7 @@ static XMGradientPanel *sharedGradientPanel = nil;
         NSNib *cellNib = [[NSNib alloc] initWithNibNamed:@"GradientPanel" bundle:[NSBundle mainBundle]];
         NSArray *objects = nil;
                 
-        [cellNib instantiateNibWithOwner:nil topLevelObjects:&objects];
+        [cellNib instantiateWithOwner:nil topLevelObjects:&objects];
         for(id object in objects) {
             
             if([object isKindOfClass:[self class]]) {
@@ -140,7 +140,11 @@ static XMGradientPanel *sharedGradientPanel = nil;
 - (void)performAction
 {
 	if([_target respondsToSelector:_action])
-		[_target performSelector:_action withObject:self];
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [_target performSelector:_action withObject:self];
+    #pragma clang diagnostic pop
+		
 }
 
 -(void)takeValueFromPicker:(id)gradientPicker {

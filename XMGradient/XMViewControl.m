@@ -60,8 +60,11 @@
 
 - (void)performAction {
     
-	if([_target respondsToSelector:_action])
-		[_target performSelector:_action withObject:self];
+	if([_target respondsToSelector:_action])        
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [_target performSelector:_action withObject:self];
+    #pragma clang diagnostic pop
 }
 
 

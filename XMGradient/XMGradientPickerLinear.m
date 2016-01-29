@@ -220,6 +220,10 @@
 	[self setNeedsDisplay:YES];
 }
 
+-(void)handleColorPanelDidClose:(NSColorPanel*)colorpanel{
+    NSLog(@"Warning: unimplemented handler");
+}
+
 - (void) mouseDragged:(NSEvent*)theEvent {
     
 	if(_activeColorStop != NSNotFound &&
