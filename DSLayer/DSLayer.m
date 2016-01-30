@@ -27,17 +27,28 @@
         _transformation = [[DSLayerTransformation alloc] init];
         _alpha=1.0;
         _source = [[DSLayerSourceCamera alloc] initWithCameraID:device.uniqueID];
+        _source.parentLayer=self;
         [self setName:device.localizedName];
     }
     return self;
 }
-
+-(id)initWithString:(NSString*)string{
+    if (self = [super init]){
+        _filters = [[NSMutableArray alloc] init];
+        _transformation = [[DSLayerTransformation alloc] init];
+        _alpha=1.0;
+        _source = [[DSLayerSourceText alloc] initWithString:string parentLayer:self];
+         _source.parentLayer=self;
+    }
+    return self;
+}
 - (id)initWithSyphonSource:(NSString*)syphonName{
     if (self = [super init]){
         _filters = [[NSMutableArray alloc] init];
         _transformation = [[DSLayerTransformation alloc] init];
         _alpha=1.0;
         _source = [[DSLayerSourceSyphon alloc] initWithServerDesc:syphonName];
+         _source.parentLayer=self;
         [self setName:syphonName];
     }
     return self;
@@ -57,8 +68,10 @@
             
             if (UTTypeConformsTo(fileUTI, kUTTypeImage)){
                 _source = [[DSLayerSourceImage alloc] initWithPath:path];
+                 _source.parentLayer=self;
             }else if (UTTypeConformsTo(fileUTI, kUTTypeMovie)){
                 _source = [[DSLayerSourceVideo alloc] initWithPath:path];
+                 _source.parentLayer=self;
             }
             
             CFRelease(fileUTI);

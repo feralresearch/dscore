@@ -29,6 +29,8 @@
 #import <DSCore/DSLayerSourceImage.h>
 #import <DSCore/DSLayerSourceSyphon.h>
 #import <DSCore/DSLayerSourceVideo.h>
+#import <DSCore/DSLayerSourceText.h>
+
 #import <DSCore/DSSyphonSource.h>
 
 #import <DSCore/DSOutputResolution.h>

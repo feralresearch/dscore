@@ -19,7 +19,7 @@
 		491B91981C5B035800BA1ABD /* DSCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B91921C5B035800BA1ABD /* DSCameraView.m */; settings = {ASSET_TAGS = (); }; };
 		491B91B11C5B7C8E00BA1ABD /* DSLayerSourceCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B91AF1C5B7C8E00BA1ABD /* DSLayerSourceCamera.h */; settings = {ASSET_TAGS = (); }; };
 		491B91B21C5B7C8E00BA1ABD /* DSLayerSourceCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B91B01C5B7C8E00BA1ABD /* DSLayerSourceCamera.m */; settings = {ASSET_TAGS = (); }; };
-		491B91D21C5B81F500BA1ABD /* DSLayerSourceText.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B91D01C5B81F500BA1ABD /* DSLayerSourceText.h */; settings = {ASSET_TAGS = (); }; };
+		491B91D21C5B81F500BA1ABD /* DSLayerSourceText.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B91D01C5B81F500BA1ABD /* DSLayerSourceText.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		491B91D31C5B81F500BA1ABD /* DSLayerSourceText.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B91D11C5B81F500BA1ABD /* DSLayerSourceText.m */; settings = {ASSET_TAGS = (); }; };
 		491B927D1C5B9EC700BA1ABD /* GradientPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491B92621C5B9EC700BA1ABD /* GradientPanel.xib */; settings = {ASSET_TAGS = (); }; };
 		491B92F71C5BA2B200BA1ABD /* XMViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 491B92DD1C5BA2B200BA1ABD /* XMViewControl.m */; settings = {ASSET_TAGS = (); }; };
@@ -746,6 +746,7 @@
 			files = (
 				491B92F81C5BA2B200BA1ABD /* XMViewControl.h in Headers */,
 				491B92FA1C5BA2B200BA1ABD /* XMGradientWell.h in Headers */,
+				491B91D21C5B81F500BA1ABD /* DSLayerSourceText.h in Headers */,
 				491B92FC1C5BA2B200BA1ABD /* XMGradientView.h in Headers */,
 				491B92FE1C5BA2B200BA1ABD /* XMGradientPickerLinear.h in Headers */,
 				491B93001C5BA2B200BA1ABD /* XMGradientPicker.h in Headers */,
@@ -757,7 +758,6 @@
 				491B930E1C5BA2B200BA1ABD /* NSGradient+XMUtilities.h in Headers */,
 				491B93101C5BA2B200BA1ABD /* NSGradient+XMGradients.h in Headers */,
 				4915D3CA1C33140A00BD7E27 /* ftd2xx.h in Headers */,
-				491B91D21C5B81F500BA1ABD /* DSLayerSourceText.h in Headers */,
 				493A90051C5A9EDC009B6D90 /* CWLSynthesizeSingleton.h in Headers */,
 				496572D51C27798A0027A429 /* DSCore.h in Headers */,
 				49E230B81C278A2F0055EF53 /* DSOSCMgrProtocol.h in Headers */,

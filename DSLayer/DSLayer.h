@@ -32,6 +32,7 @@
 -(id)initWithAVCaptureDevice:(AVCaptureDevice*)device;
 -(id)initWithSyphonSource:(NSString*)syphonName;
 -(id)initWithPath:(NSString*)path;
+-(id)initWithString:(NSString*)string;
 -(id)initWithPlaceholder;
 -(NSString*)sourceType;
 

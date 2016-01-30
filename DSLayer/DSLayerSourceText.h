@@ -9,5 +9,7 @@
 #import <DSCore/DSCore.h>
 
 @interface DSLayerSourceText : DSLayerSource
-
+- (id)initWithString:(NSString*)text parentLayer:(DSLayer*)parentLayer;
+-(void)setContent:(NSString*)content;
+-(NSString*)content;
 @end

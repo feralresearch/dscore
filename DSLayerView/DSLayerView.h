@@ -60,6 +60,9 @@
 -(DSLayer*)addCameraLayer:(AVCaptureDevice*)device;
 -(DSLayer*)replaceLayer:(int)layerIndex withCameraLayer:(AVCaptureDevice*)device;
 
+-(DSLayer*)addTextLayer:(NSString*)string withAlpha:(float)alpha;
+-(DSLayer*)addTextLayer:(NSString*)string;
+-(DSLayer*)replaceLayer:(int)layerIndex withTextLayer:(NSString*)string;
 
 // Specific layer alpha
 -(float)alphaForLayer:(long)layerIndex;

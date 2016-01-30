@@ -14,6 +14,7 @@
 #import "DSLayerSourceImage.h"
 #import "DSLayerSourceCamera.h"
 #import "DSLayerSourceVideo.h"
+#import "DSLayerSourceText.h"
 #import "DSSyphonDisplayLayer.h"
 
 #import <OpenGL/OpenGL.h>
@@ -191,6 +192,15 @@
                  layer.caLayer = camSourcedLayer.previewLayer;
                 [baseLayer addSublayer:layer.caLayer];
 
+            // Text
+            } else if([layer.source isKindOfClass:[DSLayerSourceText class]]){
+                
+                [layer.caLayer setFrame:NSMakeRect(0, 0, self.frame.size.width,self.frame.size.height)];
+                [layer.caLayer setOpacity:layer.alpha];
+                layer.caLayer.autoresizingMask = kCALayerHeightSizable | kCALayerWidthSizable;
+                layer.caLayer.contentsGravity = kCAGravityResizeAspect;
+                
+                [baseLayer addSublayer:layer.caLayer];
 
             }else{
                 
@@ -357,6 +367,26 @@
     }
     return nil;
 }
+
+
+-(DSLayer*)addTextLayer:(NSString*)string withAlpha:(float)alpha{
+    [self initLayerArray];
+    DSLayer* newLayer = [[DSLayer alloc] initWithString:string];
+    [newLayer setAlpha:alpha];
+    [newLayer setParentView:self];
+    [_layers addObject:newLayer];
+    [self rebuildLayers];
+    return newLayer;
+
+}
+-(DSLayer*)addTextLayer:(NSString*)string{
+    return [self addTextLayer:string withAlpha:1.0];
+}
+-(DSLayer*)replaceLayer:(int)layerIndex withTextLayer:(NSString*)string{
+    NSLog(@"ERROR: Not implemented because you're going to streamline the replacement stuff");
+    return nil;
+}
+
 
 -(BOOL)initLayerArray{
     if(!_layers){

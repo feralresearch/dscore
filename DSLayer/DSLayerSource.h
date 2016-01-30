@@ -9,12 +9,14 @@
 #import <OpenGL/OpenGL.h>
 #import <OpenGL/glu.h>
 #import <Opengl/glext.h>
+@class DSLayer;
 
-@interface DSLayerSource : NSObject
+@interface DSLayerSource : NSObject{}
 
-
+@property DSLayer *parentLayer;
 @property NSString* name;
 @property BOOL warning;
+
 
 -(NSImage*) icon;
 -(GLuint) glTextureTarget;
