@@ -1,5 +1,4 @@
 #import "DSCameraManager.h"
- //OC: #import "OpenCVProcess.hh"
 
 
 #define FREEWHEELING_PERIOD_IN_SECONDS 0.5
@@ -644,6 +643,10 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
     return filter_blur;
 }
 -(void)setHasFilter_blur:(BOOL)val{
+    if(!videoLayer){
+        NSLog(@"WARNING: videolayer not defined");
+        return;
+    }
     [videoLayer setFilters:[self removeFilter:filterBlur from:videoLayer]];
     filter_blur=NO;
 

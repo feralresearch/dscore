@@ -41,10 +41,24 @@
 -(void)setDebugMode:(BOOL)mode;
 -(void)setImageLayerContents:(NSImage*)image;
 
+
+// FIXME: This class is a mess, these were added as a quick and dirty
+// way to subclass this class for OCV purposes, this should be fixed at some point
 -(BOOL)hasFilter_noir;
 -(BOOL)hasFilter_blur;
 -(void)setHasFilter_noir:(BOOL)val;
 -(void)setHasFilter_blur:(BOOL)val;
+-(void)displayBufferingMessage;
+-(void)clearBufferingMessage;
+-(void)refreshCamInfo;
+-(NSMutableArray*)removeFilter:(CIFilter*)filter from:(CALayer*)layer;
+-(NSMutableArray*)addFilter:(CIFilter*)filter to:(CALayer*)layer;
+//////////////////////////////////////////////////
+
+
+-(void)removeAllFilters;
+-(void)displayCamInfo;
+
 
 @property BOOL displayInfo;
 

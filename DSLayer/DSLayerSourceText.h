@@ -8,7 +8,11 @@
 
 #import <DSCore/DSCore.h>
 
-@interface DSLayerSourceText : DSLayerSource
+@interface DSLayerSourceText : DSLayerSource{
+    NSMutableDictionary *attributes;
+    NSAttributedString *attrStr;
+    CATextLayer *textLayer;
+}
 - (id)initWithString:(NSString*)text parentLayer:(DSLayer*)parentLayer;
 -(void)setContent:(NSString*)content;
 -(NSString*)content;
